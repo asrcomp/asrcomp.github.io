@@ -6,7 +6,7 @@
     <title>ASR H2 Computing</title>
 
     <!-- external CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('css', filename='welcome.css') }}">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
 
             <div class="video-wrapper">
                 <video controls preload="metadata" poster="{{ url_for('static', filename='images/poster.jpg') }}">
-                    <source src="{{ url_for('static', filename='my-promo-video.mp4') }}" type="video/mp4">
+                    <source src="{{ url_for('images', filename='my-promo-video.mp4') }}" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
