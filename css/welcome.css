@@ -1,6 +1,4 @@
-/* ===================================================== */
-/* BASE & GLOBAL PAGE STYLES */
-/* ===================================================== */
+/* global page styles */
 body {
     font-family: 'Resist Mono', monospace;
     margin: 0;
@@ -16,11 +14,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    /* FIX: Updated path based on your folder structure description */
-    /* If your css file is in a 'css' folder and images in 'images' folder: */
     background-image: url('../images/background.gif');
-    /* If everything is in the root folder, remove the '../' */
-    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,16 +34,14 @@ body::before {
     box-sizing: border-box;
 }
 
-/* ===================================================== */
-/* NAVBAR (TOP BAR) */
-/* ===================================================== */
+/* Navbar */
 .top-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     padding: 15px 20px;
-    /* Default/Mobile: Translucent black with blur */
+    /* Mobile bar */
     background-color: rgba(0, 0, 0, 0.4); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -88,9 +80,7 @@ body::before {
     transition: 0.4s;
 }
 
-/* ===================================================== */
-/* TYPING TEXT */
-/* ===================================================== */
+/* Typing animation */
 .typing-container {
     font-size: 1.5rem;
     color: #ccc;
@@ -122,30 +112,16 @@ body::before {
     50% { opacity: 0; }
 }
 
-/* ===================================================== */
-/* CONTENT BOXES (FADE-UP ANIMATION) */
-/* ===================================================== */
+/* Fade up animation */
 .fade-up-element {
-    width: 80%;
-    max-width: 400px;
-    padding: 30px;
-    margin: 50px 0;
-    background-color: transparent;
-    color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    
-    /* Base State: Hidden (This applies to scrolling elements on mobile) */
     opacity: 0;
-    transform: translateY(200px);
-    transition: opacity 1.0s ease-out, transform 1.0s ease-out; 
+    transform: translateY(100px);
+    transition: opacity 1.4s ease-out, transform 1.4s ease-out;
 }
 
-/* Target state when element is visible */
 .fade-up-element.in-view {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Video Container */
@@ -166,9 +142,7 @@ body::before {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* ===================================================== */
-/* MOBILE MENU (SIDEBAR) */
-/* ===================================================== */
+/* Mobile side bar menu */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -176,9 +150,8 @@ body::before {
     width: 80%;
     max-width: 350px;
     height: 100vh;
-    /* Translucent background + blur */
     background-color: rgba(44, 44, 44, 0.8);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
     
     transform: translateX(100%);
@@ -216,15 +189,12 @@ body::before {
     cursor: pointer;
 }
 
-/* ===================================================== */
-/* DESKTOP STYLES (Min 768px) */
-/* ===================================================== */
+/* desktop style */
 @media (min-width: 768px) {
     .nav-button { display: none; }
     .desktop-nav-links { display: flex; }
     .mobile-menu { display: none !important; }
 
-    /* Desktop: Set navbar to fully transparent */
     .top-navbar {
         background-color: rgba(0, 0, 0, 0); 
         backdrop-filter: none;
@@ -233,7 +203,7 @@ body::before {
 
     #main-content-wrapper {
         height: 100vh;
-        overflow-y: hidden; /* Disable scroll on main wrapper for desktop */
+        overflow-y: hidden;
         padding-top: 40px;
         justify-content: center;
     }
@@ -242,30 +212,35 @@ body::before {
         margin-top: 80px;
     }
     
-    /* FIX: Force all elements visible on Desktop */
     .fade-up-element {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* ===================================================== */
-/* MOBILE STYLES (Max 767px) */
-/* ===================================================== */
+/* Mobile styles */
 @media (max-width: 767px) {
     .desktop-nav-links { display: none; }
 
     #main-content-wrapper {
         padding-top: 100px;
         padding-bottom: 50px;
-        overflow-y: auto; 
+        overflow-y: auto;
     }
 
-    /* 🔥 THE FIX IS HERE 🔥 */
-    /* Force the FIRST element (Video) to ALWAYS be visible on mobile. */
-    /* This overrides the base 'opacity: 0' immediately. */
+    /* Video fades up on mobile page load */
     .fade-up-element:first-of-type {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
+        animation: fadeUpMobile 0.8s ease-out forwards;
+    }
+    
+    @keyframes fadeUpMobile {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
