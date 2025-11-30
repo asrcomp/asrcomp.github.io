@@ -1,0 +1,244 @@
+/* global page styles */
+body {
+    font-family: 'Resist Mono', monospace;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Blurred GIF Background */
+body::before {
+    content: "";
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('static/83ea5842c1f9ff2f3a9761b6c17f3b32.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    transform: scale(1.05);
+    z-index: -1;
+}
+
+#main-content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 100px 0 50px;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 20px;
+    /* Mobile bar */
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.desktop-nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+}
+
+/* Hamburger button */
+.nav-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+/* Typing animation */
+.typing-container {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.typing-container h1 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.orange-text {
+    color: orange;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background-color: white;
+    animation: blink 0.8s infinite;
+    vertical-align: middle;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Fade up animation */
+.fade-up-element {
+    width: 80%;
+    max-width: 400px;
+    padding: 30px;
+    margin: 50px 0;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    
+    /* Initial hidden state for animation (200px offset) */
+    opacity: 0;
+    transform: translateY(200px);
+    transition: opacity 1.0s ease-out, transform 1.0s ease-out; 
+}
+
+/* Target state when element is visible */
+.fade-up-element.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Video Container */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    margin-top: 15px;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile side bar menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 350px;
+    height: 100vh;
+    /* Translucent background and blur applied directly to the menu */
+    background-color: rgba(44, 44, 44, 0.8); /* 80% opacity */
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 110;
+    padding: 50px 20px;
+    overflow-y: auto; 
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.mobile-menu ul li a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* desktop style */
+@media (min-width: 768px) {
+    .nav-button { display: none; }
+    .desktop-nav-links { display: flex; }
+    .mobile-menu { display: none !important; }
+
+    /* Desktop: Set navbar to fully transparent */
+    .top-navbar {
+        background-color: rgba(0, 0, 0, 0); 
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    #main-content-wrapper {
+        height: 100vh;
+        overflow-y: hidden; /* Disable scroll on main wrapper for desktop */
+        padding-top: 40px;
+        justify-content: center;
+    }
+
+    .typing-container {
+        margin-top: 80px;
+    }
+    
+    .fade-up-element {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 767px) {
+    .desktop-nav-links { display: none; }
+
+    #main-content-wrapper {
+        padding-top: 100px;
+        padding-bottom: 50px;
+        overflow-y: auto; /* Allow scroll on main wrapper for mobile */
+    }
+}
