@@ -116,12 +116,21 @@ body::before {
 .fade-up-element {
     opacity: 0;
     transform: translateY(100px);
-    transition: opacity 1.4s ease-out, transform 1.4s ease-out;
+    transition: opacity 1.4s ease-out, transform 1.4s ease-out; /* increased duration */
 }
 
 .fade-up-element.in-view {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ===================================================== */
+/* ADJUST ASR TEXT POSITION ON DESKTOP */
+/* ===================================================== */
+@media (min-width: 992px) {
+    .typing-container {
+        margin-top: 120px; /* Push down text for desktop */
+    }
 }
 
 /* Video Container */
@@ -150,7 +159,8 @@ body::before {
     width: 80%;
     max-width: 350px;
     height: 100vh;
-    background-color: rgba(44, 44, 44, 0.8);
+    /* Translucent background and blur applied directly to the menu */
+    background-color: rgba(44, 44, 44, 0.8); /* 80% opacity */
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
     
@@ -195,6 +205,7 @@ body::before {
     .desktop-nav-links { display: flex; }
     .mobile-menu { display: none !important; }
 
+    /* Desktop: Set navbar to fully transparent */
     .top-navbar {
         background-color: rgba(0, 0, 0, 0); 
         backdrop-filter: none;
@@ -203,7 +214,7 @@ body::before {
 
     #main-content-wrapper {
         height: 100vh;
-        overflow-y: hidden;
+        overflow-y: hidden; /* Disable scroll on main wrapper for desktop */
         padding-top: 40px;
         justify-content: center;
     }
@@ -225,22 +236,6 @@ body::before {
     #main-content-wrapper {
         padding-top: 100px;
         padding-bottom: 50px;
-        overflow-y: auto;
-    }
-
-    /* Video fades up on mobile page load */
-    .fade-up-element:first-of-type {
-        animation: fadeUpMobile 0.8s ease-out forwards;
-    }
-    
-    @keyframes fadeUpMobile {
-        from {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        overflow-y: auto; /* Allow scroll on main wrapper for mobile */
     }
 }
