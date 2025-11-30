@@ -3,7 +3,7 @@
 /* ===================================================== */
 const typingElement = document.getElementById('typing-text');
 const phrases = [
-    'print("Hello world 🌎")',
+    'print("Hello world")',
     'import sklearn',
     'print("Welcome to ASR!")',
     'import sqlite3'
@@ -45,16 +45,11 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 window.toggleMobileMenu = function() {
     mobileMenu.classList.toggle('open');
-    
-    if (mobileMenu.classList.contains('open')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 }
 
 /* ===================================================== */
-/* FADE UP ANIMATION CONTROL (Mobile Scroll Only) */
+/* FADE UP ANIMATION CONTROL */
 /* ===================================================== */
 const fadeUpElements = document.querySelectorAll('.fade-up-element');
 
@@ -65,38 +60,20 @@ const observerOptions = {
 };
 
 const observerCallback = (entries, observer) => {
-    if (window.innerWidth < 768) {
-        entries.forEach(entry => {
-            // Skip the video element on mobile - CSS animation handles it
-            if (entry.target.id === 'about') return;
-
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target); 
-            } 
-        });
-    }
+    entries.forEach(entry => {
+        // Apply the same "fade up" behaviour for all elements (including #about)
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target); 
+        }
+    });
 };
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
+fadeUpElements.forEach(el => observer.observe(el));
 
-fadeUpElements.forEach(element => {
-    observer.observe(element);
-});
-
-/* ===================================================== */
-/* RESIZE Handling */
-/* ===================================================== */
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
-        fadeUpElements.forEach(element => {
-            observer.unobserve(element);
-        });
-    } else {
-        fadeUpElements.forEach(element => {
-            if (!element.classList.contains('in-view')) {
-                observer.observe(element);
-            }
-        });
+        fadeUpElements.forEach(el => observer.unobserve(el));
     }
 });
