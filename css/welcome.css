@@ -1,4 +1,6 @@
-/* global page styles */
+/* ===================================================== */
+/* BASE & GLOBAL PAGE STYLES */
+/* ===================================================== */
 body {
     font-family: 'Resist Mono', monospace;
     margin: 0;
@@ -14,7 +16,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../images/background.gif');
+    background-image: url('static/83ea5842c1f9ff2f3a9761b6c17f3b32.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -34,14 +36,15 @@ body::before {
     box-sizing: border-box;
 }
 
-/* Navbar */
+/* ===================================================== */
+/* NAVBAR (TOP BAR) */
+/* ===================================================== */
 .top-navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     padding: 15px 20px;
-    /* Mobile bar */
     background-color: rgba(0, 0, 0, 0.4); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -64,7 +67,6 @@ body::before {
     font-size: 1rem;
 }
 
-/* Hamburger button */
 .nav-button {
     background: none;
     border: none;
@@ -80,7 +82,9 @@ body::before {
     transition: 0.4s;
 }
 
-/* Typing animation */
+/* ===================================================== */
+/* TYPING TEXT */
+/* ===================================================== */
 .typing-container {
     font-size: 1.5rem;
     color: #ccc;
@@ -112,25 +116,30 @@ body::before {
     50% { opacity: 0; }
 }
 
-/* Fade up animation */
+/* ===================================================== */
+/* CONTENT BOXES (FADE-UP ANIMATION) */
+/* ===================================================== */
 .fade-up-element {
+    width: 80%;
+    max-width: 400px;
+    padding: 30px;
+    margin: 50px 0;
+    background-color: transparent;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
     opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1.4s ease-out, transform 1.4s ease-out; /* increased duration */
+    transform: translate3d(0,80px,0);
+    transition: opacity 1.0s ease-out, transform 1.0s ease-out; 
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .fade-up-element.in-view {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ===================================================== */
-/* ADJUST ASR TEXT POSITION ON DESKTOP */
-/* ===================================================== */
-@media (min-width: 992px) {
-    .typing-container {
-        margin-top: 120px; /* Push down text for desktop */
-    }
+    opacity: 1 !important;
+    transform: translate3d(0,0,0) !important;
 }
 
 /* Video Container */
@@ -139,6 +148,9 @@ body::before {
     width: 100%;
     padding-top: 56.25%;
     margin-top: 15px;
+    overflow: hidden;
+    transform: translate3d(0,0,0);
+    will-change: transform;
 }
 
 .video-wrapper video {
@@ -149,9 +161,13 @@ body::before {
     height: 100%;
     border-radius: 6px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backface-visibility: hidden;
+    transform: translate3d(0,0,0);
 }
 
-/* Mobile side bar menu */
+/* ===================================================== */
+/* MOBILE MENU (SIDEBAR) */
+/* ===================================================== */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -159,11 +175,9 @@ body::before {
     width: 80%;
     max-width: 350px;
     height: 100vh;
-    /* Translucent background and blur applied directly to the menu */
-    background-color: rgba(44, 44, 44, 0.8); /* 80% opacity */
-    backdrop-filter: blur(15px); 
+    background-color: rgba(44, 44, 44, 0.8);
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 110;
@@ -199,13 +213,14 @@ body::before {
     cursor: pointer;
 }
 
-/* desktop style */
+/* ===================================================== */
+/* DESKTOP STYLES (Min 768px) */
+/* ===================================================== */
 @media (min-width: 768px) {
     .nav-button { display: none; }
     .desktop-nav-links { display: flex; }
     .mobile-menu { display: none !important; }
 
-    /* Desktop: Set navbar to fully transparent */
     .top-navbar {
         background-color: rgba(0, 0, 0, 0); 
         backdrop-filter: none;
@@ -214,7 +229,7 @@ body::before {
 
     #main-content-wrapper {
         height: 100vh;
-        overflow-y: hidden; /* Disable scroll on main wrapper for desktop */
+        overflow-y: hidden;
         padding-top: 40px;
         justify-content: center;
     }
@@ -222,20 +237,23 @@ body::before {
     .typing-container {
         margin-top: 80px;
     }
-    
+
     .fade-up-element {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1 !important;
+        transform: translate3d(0,0,0) !important;
+        margin: 10px 0;
     }
 }
 
-/* Mobile styles */
+/* ===================================================== */
+/* MOBILE STYLES (Max 767px) */
+/* ===================================================== */
 @media (max-width: 767px) {
     .desktop-nav-links { display: none; }
 
     #main-content-wrapper {
         padding-top: 100px;
         padding-bottom: 50px;
-        overflow-y: auto; /* Allow scroll on main wrapper for mobile */
+        overflow-y: auto; 
     }
 }
