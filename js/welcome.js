@@ -1,4 +1,6 @@
-/* Typing animation text */
+/* ===================================================== */
+/* TYPEWRITER TEXT */
+/* ===================================================== */
 const typingElement = document.getElementById('typing-text');
 const phrases = [
     'print("Hello world 🌎")',
@@ -36,13 +38,14 @@ function type() {
 
 document.addEventListener('DOMContentLoaded', type);
 
-/*Mobile side bar menu */
+/* ===================================================== */
+/* MOBILE MENU (SIDEBAR) TOGGLE */
+/* ===================================================== */
 const mobileMenu = document.getElementById('mobileMenu');
 
 window.toggleMobileMenu = function() {
     mobileMenu.classList.toggle('open');
     
-    // Prevent background scrolling when menu is open
     if (mobileMenu.classList.contains('open')) {
         document.body.style.overflow = 'hidden';
     } else {
@@ -50,7 +53,9 @@ window.toggleMobileMenu = function() {
     }
 }
 
-/* Fade up animation */
+/* ===================================================== */
+/* FADE UP ANIMATION CONTROL (Mobile Scroll Only) */
+/* ===================================================== */
 const fadeUpElements = document.querySelectorAll('.fade-up-element');
 
 const observerOptions = {
@@ -60,9 +65,14 @@ const observerOptions = {
 };
 
 const observerCallback = (entries, observer) => {
-    // Only apply scroll-based logic on mobile where scrolling is allowed in the wrapper
+    // Only apply scroll-based logic on mobile
     if (window.innerWidth < 768) {
         entries.forEach(entry => {
+            
+            // 🔥 JS FIX: Ignore the video element (#about) entirely on mobile
+            // We let CSS handle its visibility so it never fades out.
+            if (entry.target.id === 'about') return;
+
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
                 // FIX JITTER: Stop observing once visible
@@ -79,16 +89,17 @@ fadeUpElements.forEach(element => {
     observer.observe(element);
 });
 
-/* Fix jitter by adjusting observers for mobile and desktop transition */
+/* ===================================================== */
+/* RESIZE Handling */
+/* ===================================================== */
 window.addEventListener('resize', () => {
-    // If resizing to desktop (>= 768px), stop observing all elements
     if (window.innerWidth >= 768) {
+        // Desktop: Stop observing
         fadeUpElements.forEach(element => {
             observer.unobserve(element);
         });
-    } 
-    // If resizing to mobile (< 768px), restart observing only elements that haven't been animated yet
-    else {
+    } else {
+        // Mobile: Restart observing elements that haven't been animated yet
         fadeUpElements.forEach(element => {
             if (!element.classList.contains('in-view')) {
                  observer.observe(element);
