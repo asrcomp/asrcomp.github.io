@@ -65,17 +65,13 @@ const observerOptions = {
 };
 
 const observerCallback = (entries, observer) => {
-    // Only apply scroll-based logic on mobile
     if (window.innerWidth < 768) {
         entries.forEach(entry => {
-            
-            // 🔥 JS FIX: Ignore the video element (#about) entirely on mobile
-            // We let CSS handle its visibility so it never fades out.
+            // Skip the video element on mobile - CSS animation handles it
             if (entry.target.id === 'about') return;
 
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
-                // FIX JITTER: Stop observing once visible
                 observer.unobserve(entry.target); 
             } 
         });
@@ -85,7 +81,6 @@ const observerCallback = (entries, observer) => {
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
 fadeUpElements.forEach(element => {
-     // Start observing all elements
     observer.observe(element);
 });
 
@@ -94,15 +89,13 @@ fadeUpElements.forEach(element => {
 /* ===================================================== */
 window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
-        // Desktop: Stop observing
         fadeUpElements.forEach(element => {
             observer.unobserve(element);
         });
     } else {
-        // Mobile: Restart observing elements that haven't been animated yet
         fadeUpElements.forEach(element => {
             if (!element.classList.contains('in-view')) {
-                 observer.observe(element);
+                observer.observe(element);
             }
         });
     }
