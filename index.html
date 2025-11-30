@@ -4,7 +4,273 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASR H2 Computing</title>
-    <link rel="stylesheet" href="css/welcome.css">
+    <style>
+        /* ===================================================== */
+        /* BASE & GLOBAL PAGE STYLES */
+        /* ===================================================== */
+        body {
+            font-family: 'Resist Mono', monospace;
+            margin: 0;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Blurred GIF Background */
+        body::before {
+            content: "";
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('static/83ea5842c1f9ff2f3a9761b6c17f3b32.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px);
+            transform: scale(1.05);
+            z-index: -1;
+        }
+
+        #main-content-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 100px 0 50px;
+            box-sizing: border-box;
+        }
+
+        /* ===================================================== */
+        /* NAVBAR (TOP BAR) */
+        /* ===================================================== */
+        .top-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            background-color: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 1.5rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .desktop-nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1rem;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* ===================================================== */
+        /* TYPING TEXT */
+        /* ===================================================== */
+        .typing-container {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .typing-container h1 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .orange-text {
+            color: orange;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: white;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ===================================================== */
+        /* CONTENT BOXES (FADE-UP ANIMATION) */
+        /* ===================================================== */
+        /* Use translate3d for smoother GPU compositing and keep a consistent "start below → move up" behaviour */
+        .fade-up-element {
+            width: 80%;
+            max-width: 400px;
+            padding: 30px;
+            margin: 50px 0;
+            background-color: transparent;
+            color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            
+            opacity: 0;
+            transform: translate3d(0,80px,0); /* start slightly below (mobile & desktop) */
+            transition: opacity 1.0s ease-out, transform 1.0s ease-out; 
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        /* when element becomes visible, move to natural position (upwards) */
+        .fade-up-element.in-view {
+            opacity: 1 !important;
+            transform: translate3d(0,0,0) !important;
+        }
+
+        /* Video Container */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            margin-top: 15px;
+            overflow: hidden;
+            transform: translate3d(0,0,0);
+            will-change: transform;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            backface-visibility: hidden;
+            transform: translate3d(0,0,0);
+        }
+
+        /* ===================================================== */
+        /* MOBILE MENU (SIDEBAR) */
+        /* ===================================================== */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 350px;
+            height: 100vh;
+            background-color: rgba(44, 44, 44, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 110;
+            padding: 50px 20px;
+            overflow-y: auto; 
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .mobile-menu ul li a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ===================================================== */
+        /* DESKTOP STYLES (Min 768px) */
+        /* ===================================================== */
+        @media (min-width: 768px) {
+            .nav-button { display: none; }
+            .desktop-nav-links { display: flex; }
+            .mobile-menu { display: none !important; }
+
+            .top-navbar {
+                background-color: rgba(0, 0, 0, 0); 
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+            }
+
+            #main-content-wrapper {
+                height: 100vh;
+                overflow-y: hidden;
+                padding-top: 40px;
+                justify-content: center;
+            }
+
+            .typing-container {
+                margin-top: 80px;
+            }
+            
+            /* desktop shows content already in its final position */
+            .fade-up-element {
+                opacity: 1 !important;
+                transform: translate3d(0,0,0) !important;
+                margin: 10px 0; /* nudge up a bit */
+            }
+        }
+
+        /* ===================================================== */
+        /* MOBILE STYLES (Max 767px) */
+        /* ===================================================== */
+        @media (max-width: 767px) {
+            .desktop-nav-links { display: none; }
+
+            #main-content-wrapper {
+                padding-top: 100px;
+                padding-bottom: 50px;
+                overflow-y: auto; 
+            }
+
+            /* Remove special-case animation that caused inconsistent direction.
+               On mobile the same .fade-up-element + .in-view rules will be used */
+        }
+    </style>
 </head>
 <body>
 
@@ -25,7 +291,7 @@
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
-        <span class="close-btn" onclick="toggleMobileMenu()">&times;</span>
+        <span class="close-btn" onclick="toggleMobileMenu()">×</span>
         <ul>
             <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
             <li><a href="experience.html" onclick="toggleMobileMenu()">The Experience</a></li>
@@ -46,7 +312,7 @@
 
             <div class="video-wrapper">
                 <video controls preload="metadata" poster="path/to/your/poster-image.jpg">
-                    <source src="images/promotion-video.mp4" type="video/mp4">
+                    <source src="static/my-promo-video.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -54,7 +320,87 @@
 
     </div>
 
-    <script src="js/welcome.js"></script>
+    <script>
+        /* ===================================================== */
+        /* TYPEWRITER TEXT */
+        /* ===================================================== */
+        const typingElement = document.getElementById('typing-text');
+        const phrases = [
+            'print("Hello world")',
+            'import sklearn',
+            'print("Welcome to ASR!")',
+            'import sqlite3'
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const current = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true;
+                setTimeout(type, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 40 : 70);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', type);
+
+        /* ===================================================== */
+        /* MOBILE MENU (SIDEBAR) TOGGLE */
+        /* ===================================================== */
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        window.toggleMobileMenu = function() {
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        }
+
+        /* ===================================================== */
+        /* FADE UP ANIMATION CONTROL */
+        /* ===================================================== */
+        const fadeUpElements = document.querySelectorAll('.fade-up-element');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.05 
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                // Apply the same "fade up" behaviour for all elements (including #about)
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        fadeUpElements.forEach(el => observer.observe(el));
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                fadeUpElements.forEach(el => observer.unobserve(el));
+            }
+        });
+    </script>
 
 </body>
 </html>
