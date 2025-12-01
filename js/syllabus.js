@@ -62,3 +62,10 @@ window.addEventListener('resize', () => {
 window.addEventListener('load', () => {
     moveSlide(currentSlideIndex);
 });
+
+/* MOBILE MENU */
+    const mobileMenu = document.getElementById('mobileMenu');
+    window.toggleMobileMenu = function() {
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    };
