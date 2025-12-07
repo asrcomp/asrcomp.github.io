@@ -1,276 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Resources - H2 Computing @ ASRJC</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Learning Resources - ASR H2 Computing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/resources.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-text">ASRJC Computing</span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Welcome</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="experience.html" class="nav-link">The Experience</a></li>
-                <li><a href="opportunities.html" class="nav-link">Opportunities</a></li>
-                <li><a href="resources.html" class="nav-link active">Learning Resources</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+    <nav class="top-navbar">
+        <div class="navbar-logo"><a href="index.html" style="text-decoration: none;" class="navbar-logo">ASR</a></div>
+        <div class="desktop-nav-links">
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="resources.html">Learning Resources</a>
         </div>
+        <button class="nav-button" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Learning Resources</h1>
-            <p>Curated materials to support your computing journey</p>
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-btn" onclick="toggleMobileMenu()">×</span>
+        <ul>
+            <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
+            <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
+        </ul>
+    </div>
+
+    <div id="main-content-wrapper">
+
+        <h1 class="page-title fade-up-element"><span class="orange-text">Learning</span> Resources</h1>
+
+        <div class="content-section fade-up-element text-center-section">
+            <p><strong>Here are some resources for you to kickstart your learning!</strong></p>
+            <br>
+            <p>If you don't have 'O' Level Computing background, I strongly recommend that you choose one of the following and learn from it, so that you have some foundation.</p>
+            <br>
+            <p>JC is very fast-paced, so if you are going to take the subject, it's best to prepare yourself with some foundational knowledge through these well-developed resources.</p>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <main class="container">
-        <section class="content-section">
-            <h2>📚 Official Resources</h2>
+        <div class="long-section fade-up-element">
+            <h2>Computer Science</h2>
             
-            <div class="resource-cards">
-                <div class="resource-card">
-                    <div class="resource-icon">📖</div>
-                    <h3>MOE H2 Computing Resources</h3>
-                    <p>Official syllabus documents, teaching guides, and examination papers from the Singapore Ministry of Education.</p>
-                    <a href="https://www.moe.gov.sg" class="resource-link" target="_blank">Visit MOE Website →</a>
+            <div class="section-flex">
+                <div class="section-image">
+                    <h3 style="color: #4a90e2; margin-bottom: 10px;">CS50 by Harvard University</h3>
+                    <img src="images/image_17.jpg" alt="CS50 Logo" style="width: 200px;">
+                    
+                    <h3 style="color: white; font-weight: 800; margin-top: 10px;">This is CS50.</h3>
                 </div>
 
-                <div class="resource-card">
-                    <div class="resource-icon">💻</div>
-                    <h3>SEAB Past Year Papers</h3>
-                    <p>Access previous years' A-Level Computing examination papers to understand question formats and practice.</p>
-                    <a href="https://www.seab.gov.sg" class="resource-link" target="_blank">Visit SEAB Website →</a>
-                </div>
-            </div>
-        </section>
+                <div class="section-text">
+                    <p><strong>CS50</strong>, or "CS50: Introduction to Computer Science," is an incredibly beneficial and popular online course offered by <strong>Harvard University</strong>. Taught by <strong>Professor David J. Malan</strong>, the course is renowned for its engaging and accessible approach to computer science.</p>
+                    <p>Professor Malan's dynamic teaching style, combined with a well-structured curriculum, ensures that complex topics such as algorithms, data structures, software engineering, and web development are made approachable and engaging.</p>
+                    <p>The course offers a comprehensive suite of practice problems that play a crucial role in reinforcing the concepts taught throughout the course. These practice problems range from basic exercises to complex challenges.</p>
+                    
+                    <br>
+                    <p>CS50 comes in several "flavors," each tailored to different interests and fields.</p>
+                    <p>I would recommend that you start with either:</p>
+                    <ul>
+                        <li><a href="https://cs50.harvard.edu/python" target="_blank" style="color: red;">CS50P</a>, if you wish to start simple with an introduction to <strong>Python programming</strong>.</li>
+                        <li><a href="https://cs50.harvard.edu/x" target="_blank" style="color: blue;">CS50X</a> for their flagship <strong>Introduction to Computer Science</strong> course. It covers many aspects, such as:
+                            <ul>
+                                <li>Data structures and Algorithms</li>
+                                <li>C and Python</li>
+                                <li>SQL to work with databases</li>
+                                <li>HTML, CSS and JavaScript for frontend web development</li>
+                                <li>Flask for backend web development</li>
+                                <li>AI</li>
+                            </ul>
+                        </li>
+                    </ul>
 
-        <section class="content-section">
-            <h2>🐍 Python Programming</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>Python Documentation</h3>
-                    <p>The official Python documentation - your comprehensive reference for Python language features.</p>
-                    <a href="https://docs.python.org" target="_blank">docs.python.org</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Real Python</h3>
-                    <p>Tutorials, articles, and courses for Python programmers of all skill levels.</p>
-                    <a href="https://realpython.com" target="_blank">realpython.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Python Tutor</h3>
-                    <p>Visualize code execution step-by-step to understand how Python programs work.</p>
-                    <a href="https://pythontutor.com" target="_blank">pythontutor.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>W3Schools Python Tutorial</h3>
-                    <p>Interactive tutorials with examples you can try yourself in the browser.</p>
-                    <a href="https://www.w3schools.com/python" target="_blank">w3schools.com/python</a>
+                    <p>After completing the course, you can continue with some of their other offerings:</p>
+                    <ul>
+                        <li><a href="#" class="orange-text">CS50 SQL</a></li>
+                        <li><a href="#" class="orange-text">CS50 Web</a></li>
+                        <li><a href="#" class="orange-text">CS50 AI</a></li>
+                        <li><a href="#" class="orange-text">CS50 Cybersecurity</a></li>
+                    </ul>
                 </div>
             </div>
-        </section>
-
-        <section class="content-section">
-            <h2>🎯 Algorithms & Data Structures</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>VisuAlgo</h3>
-                    <p>Visualizing data structures and algorithms through animation - created by NUS professors.</p>
-                    <a href="https://visualgo.net" target="_blank">visualgo.net</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>GeeksforGeeks</h3>
-                    <p>Comprehensive articles on algorithms, data structures, and computer science concepts.</p>
-                    <a href="https://www.geeksforgeeks.org" target="_blank">geeksforgeeks.org</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Algorithm Visualizer</h3>
-                    <p>Interactive platform to visualize algorithms from code to animation.</p>
-                    <a href="https://algorithm-visualizer.org" target="_blank">algorithm-visualizer.org</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>💪 Practice Platforms</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>LeetCode</h3>
-                    <p>Practice coding problems with varying difficulty levels, popular for interview preparation.</p>
-                    <a href="https://leetcode.com" target="_blank">leetcode.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>HackerRank</h3>
-                    <p>Solve challenges in various programming domains and prepare for technical interviews.</p>
-                    <a href="https://www.hackerrank.com" target="_blank">hackerrank.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Codeforces</h3>
-                    <p>Competitive programming platform with regular contests and a large problem archive.</p>
-                    <a href="https://codeforces.com" target="_blank">codeforces.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>CodeChef</h3>
-                    <p>Practice problems, participate in contests, and improve your programming skills.</p>
-                    <a href="https://www.codechef.com" target="_blank">codechef.com</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>🎓 Online Courses & Tutorials</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>CS50's Introduction to Computer Science</h3>
-                    <p>Harvard's famous introductory computer science course, available free online.</p>
-                    <a href="https://cs50.harvard.edu" target="_blank">cs50.harvard.edu</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>MIT OpenCourseWare</h3>
-                    <p>Free course materials from MIT including Introduction to Computer Science and Programming.</p>
-                    <a href="https://ocw.mit.edu" target="_blank">ocw.mit.edu</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Coursera</h3>
-                    <p>University-level courses on various computing topics including algorithms and software development.</p>
-                    <a href="https://www.coursera.org" target="_blank">coursera.org</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>freeCodeCamp</h3>
-                    <p>Learn web development, programming, and computer science through interactive lessons.</p>
-                    <a href="https://www.freecodecamp.org" target="_blank">freecodecamp.org</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>🛠️ Development Tools</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>Visual Studio Code</h3>
-                    <p>Popular, free code editor with excellent Python support and extensions.</p>
-                    <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>PyCharm</h3>
-                    <p>Professional Python IDE with intelligent code assistance (Community Edition is free).</p>
-                    <a href="https://www.jetbrains.com/pycharm" target="_blank">jetbrains.com/pycharm</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>Replit</h3>
-                    <p>Online IDE for quick prototyping and collaborative coding in the browser.</p>
-                    <a href="https://replit.com" target="_blank">replit.com</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>GitHub</h3>
-                    <p>Version control and collaboration platform - essential for managing code projects.</p>
-                    <a href="https://github.com" target="_blank">github.com</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>📺 YouTube Channels</h2>
-            
-            <div class="resource-list">
-                <div class="resource-item">
-                    <h3>Corey Schafer</h3>
-                    <p>Clear, comprehensive Python tutorials covering fundamentals to advanced topics.</p>
-                    <a href="https://www.youtube.com/@coreyms" target="_blank">@coreyms</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>freeCodeCamp.org</h3>
-                    <p>Full programming courses and tutorials in long-form video format.</p>
-                    <a href="https://www.youtube.com/@freecodecamp" target="_blank">@freecodecamp</a>
-                </div>
-
-                <div class="resource-item">
-                    <h3>CS Dojo</h3>
-                    <p>Programming tutorials and career advice from a former Google software engineer.</p>
-                    <a href="https://www.youtube.com/@CSDojo" target="_blank">@CSDojo</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="content-section study-tips">
-            <h2>💡 Study Tips</h2>
-            <div class="tips-grid">
-                <div class="tip-card">
-                    <h3>Practice Regularly</h3>
-                    <p>Code every day, even if just for 30 minutes. Consistency is key to mastering programming.</p>
-                </div>
-
-                <div class="tip-card">
-                    <h3>Understand, Don't Memorize</h3>
-                    <p>Focus on understanding concepts and logic rather than memorizing syntax or solutions.</p>
-                </div>
-
-                <div class="tip-card">
-                    <h3>Debug Systematically</h3>
-                    <p>Learn to read error messages, use print statements, and trace through your code logically.</p>
-                </div>
-
-                <div class="tip-card">
-                    <h3>Learn by Teaching</h3>
-                    <p>Explain concepts to classmates or write about them. Teaching others solidifies your understanding.</p>
-                </div>
-
-                <div class="tip-card">
-                    <h3>Build Projects</h3>
-                    <p>Apply what you learn by building real projects. This practical experience is invaluable.</p>
-                </div>
-
-                <div class="tip-card">
-                    <h3>Read Others' Code</h3>
-                    <p>Study well-written code on GitHub or in documentation to learn best practices and new techniques.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Anderson Serangoon Junior College. All rights reserved.</p>
-            <p>H2 Computing Department</p>
         </div>
-    </footer>
 
-    <script src="js/main.js"></script>
+        <div class="long-section fade-up-element">
+            <h2>Python Programming with AI</h2>
+            
+            <div class="section-flex">
+                <div class="section-image">
+                    <img src="images/image_18.jpg" alt="AI Python for Beginners" style="width: 100%; border-radius: 8px;">
+                    <p style="margin-top: 10px; font-size: 0.9rem; color: #aaa;">AI Python for Beginners</p>
+                </div>
+
+                <div class="section-text">
+                    <p>This is a <span style="color:red; font-weight:bold;">NEW</span> course by <strong>DeepLearning.AI</strong> for you to learn <strong style="color:cyan;">not just Python programming, but also AI along with it!</strong></p>
+                    
+                    <p>It's a very beginner-friendly course, taught by a renowned and globally recognised leader in AI, <a href="#" style="color: cyan;">Dr Andrew Ng</a>.</p>
+
+                    <p>You would learn essential programming concepts in this course. And as you progress, you will also be writing Python scripts that interact with large language models, automate tasks and analyse data.</p>
+
+                    <p>You'll also get some hands-on experience using Python for data visualisation and accessing real-time information through APIs.</p>
+                    
+                    <p>So if you are keen to learn programming in an integrated manner, go ahead and <a href="https://www.deeplearning.ai/short-courses/ai-python-for-beginners/" target="_blank" style="color: red; font-weight: bold;">start learning here</a>.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/resources.js"></script>
 </body>
 </html>
