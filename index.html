@@ -4,22 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>ASR H2 Computing</title>
-
-    <!-- external CSS -->
-    <link rel="stylesheet" href="css/welcome.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
 </head>
 <body>
 
     <nav class="top-navbar">
         <div class="navbar-logo">ASR</div>
-
         <div class="desktop-nav-links">
             <a href="about.html">About</a>
             <a href="experience.html">The Experience</a>
             <a href="opportunities.html">Opportunities</a>
             <a href="resources.html">Learning Resources</a>
         </div>
-
         <button class="nav-button" onclick="toggleMobileMenu()">
             <div class="hamburger-line"></div>
             <div class="hamburger-line"></div>
@@ -37,7 +36,6 @@
     </div>
 
     <div id="main-content-wrapper">
-
         <div class="typing-container">
             <h1><span class="orange-text">ASR</span> H2 Computing</h1>
             <span id="typing-text"></span><span class="cursor"></span>
@@ -45,18 +43,167 @@
 
         <div class="fade-up-element video-container" id="about">
             <h2>Why H2 Computing?</h2>
-
             <div class="video-wrapper">
-                <video controls preload="metadata" poster="{{ url_for('static', filename='images/poster.jpg') }}">
-                    <source src="images/my-promo-video.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/tHtBknG_x9Y" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
 
+        <div id="highlights" class="content-section">
+            <h2 class="fade-up-element section-title">Highlights and Achievements</h2>
+            
+            <div class="highlights-grid">
+                <div class="fade-up-element highlight-card" 
+                     data-title="Cyberthon 2025" 
+                     data-desc="ASRJC Computing students from both JC1 and JC2 levels enthusiastically participated in Cyberthon 2025, a data science and cybersecurity competition organized by Hwa Chong Institution in collaboration with CSIT and DIS. The event provided an exciting platform for students to develop and showcase their data science and cybersecurity skills.
+
+Our students had a great time tackling the training challenges. For the Finals, they collaborated in teams of four, working closely together to solve complex cybersecurity problems under time constraints. The competition was intense and challenging, pushing the students to apply their knowledge and teamwork effectively.
+
+Among the competing teams from various institutions, one of our ASRJC teams distinguished itself by securing 10th place, a commendable achievement given the high level of competition. This result reflects the dedication, skill, and collaborative spirit of our Computing students as they engaged deeply with real-world cyber defense scenarios.
+
+Overall, Cyberthon 2025 was a rewarding experience that not only tested our students' technical abilities but also fostered camaraderie and a passion for cybersecurity, preparing them for future challenges in the digital domain.<br><br>
+<b>Team Kikuri's Beerpacket obtained overall 10th place</b><br>
+Members:<br>
+- Allard Luo Zhihan<br>
+- Re Zhuo Yufeng<br>
+- Daniyal Mikhail Bin Rizal<br>
+- Le Ngyuen Thanh Minh" 
+                     data-images="{{ url_for('static', filename='images/image_3.jpg') }},{{ url_for('static', filename='images/image_4.jpg') }},{{ url_for('static', filename='images/image_5.jpg') }},{{ url_for('static', filename='images/image_6.jpg') }}">
+                     <h3>Cyberthon 2025🛡️</h3>
+                     <p>Achieved 10th place<br>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card" 
+                     data-title="Cyberthon 2024" 
+                     data-desc='Cyberthon 2024, an exhilarating online challenge that merges the worlds of cybersecurity and data science, was co-organized by Hwa Chong Institution, the Centre for Strategic Infocomm Technologies (CSIT), and the Digital and Intelligence Service (DIS).
+
+This year, 628 participants teamed up in groups of four to tackle a series of demanding Capture-The-Flag (CTF) challenges that tested their technical skills in pwn, reverse engineering, forensics, web exploitation and data science.
+
+Despite facing stiff competition from other schools, one of our ASR teams ("TI-84 CE Python") achieved an impressive 8th place finish, a highly remarkable achievement!'
+                     data-link="https://cyberthon.hci.edu.sg/"
+                     data-images="{{ url_for('static', filename='images/image_15.jpg') }},{{ url_for('static', filename='images/image_16.jpg') }}">
+                     <h3>Cyberthon 2024</h3>
+                     <p>Achieved 8th place<br>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card" 
+                     data-title="NUS MUFG DELL HumanITy Challenge 2024" 
+                     data-desc="The HumanITy Challenge is a sustainability-focused innovation competition, organised by the NUS Department of Information Systems and Analytics, where pre-university students harness the power of IT to develop solutions for pressing sustainability issues in our society. 
+
+This year's competition saw participation of many teams from 16 Junior Colleges and polytechnics. We are proud to announce that our ASR Computing team, ACEnders, advanced to the Finals. 
+
+On August 17, 2024, the team members presented their ideas to a panel of judges and achieved an impressive 2nd place in the Finals. Congratulations to the team! 😄"
+                     data-link="https://www.comp.nus.edu.sg/humanity/"
+                     data-images="{{ url_for('static', filename='images/image_10.jpg') }},{{ url_for('static', filename='images/image_11.jpg') }}">
+                     <h3>NUS MUFG DELL HumanITy Challenge 2024</h3>
+                     <p>Placed 2nd in finals<br>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card" 
+                     data-title="BlahajCTF 2024🦈" 
+                     data-desc="TThis is a fun Blahaj-themed Capture-The-Flag (CTF) competition! Those team members who qualify for the Finals received an IKEA Blahaj each. A number of ASR students participated in this and performed really well in conquering the challenges and entered the Finals 😎. It was indeed a fun experience for the participants to work in teams and tackle those cybersecurity-related challenges." 
+                     data-link="https://blahaj.sg"
+                     data-images="{{ url_for('static', filename='images/image_8.jpg') }},{{ url_for('static', filename='images/image_9.jpg') }}">
+                     <h3>BlahajCTF 2024</h3>
+                     <p>click for details</p>
+                </div>
+                
+                <div class="fade-up-element highlight-card" 
+                    data-title="Swift Explorers App Development Challenge 2024"
+                    data-desc="A team of computing students participated in the Swift Explorers App Development challenge, organised by Crescent Girls School (CGS) and School of Science and Technology (SST). Through the programme, they explored Swift coding on iPad and used that knowledge to develop a Hawker Makan app that provides comprehensive information that patrons would find helpful when visiting the hawker centres.
+
+Many of them were not familiar with Swift Playgrounds but got to learn how to use it while developing the prototype of the app. The challenge culminated with a celebration event on 14 August 2024, where the teams presented their prototypes to other participants at CGS." 
+                    data-images="{{ url_for('static', filename='images/image_12.jpg') }},{{ url_for('static', filename='images/image_13.jpg') }},{{ url_for('static', filename='images/image_14.jpg') }}">
+                    <h3>Swift Explorers App Development Challenge 2024</h3>
+                    <p>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card" 
+                    data-title="National Olympiad in Artificial Intelligence (NOAI) 2025" 
+                    data-desc="The inaugural National Olympiad in Artificial Intelligence (NOAI) 2025, jointly organised by AI Singapore and Nanyang Technological University (NTU), brought together over 120 talented students from 20 schools across Singapore to compete in the nation’s premier AI competition. NOAI is designed to uncover, inspire, and empower the next generation of AI innovators, providing a rigorous platform for students to demonstrate their skills in areas such as Machine Learning, Natural Language Processing, Computer Vision, and Programming.
+
+We are proud to share that three of our students - Le Nguyen Thanh Minh, Paphangkorn Soponthammapan, and Tai Jia Sheng - distinguished themselves as Top 60 finalists in this national olympiad. Their achievement highlights their dedication and aptitude in AI, as well as their readiness to tackle real-world challenges in this rapidly evolving field." 
+                    data-images="{{ url_for('static', filename='images/image_7.jpg') }}">
+                    <h3>National Olympiad in Artificial Intelligence (NOAI) 2025</h3>
+                    <p>Were amongst Top 60 finalists<br>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card"
+                    data-title="NOI 2025" 
+                    data-desc="We are proud to announce the achievements of our students at the Singapore National Olympiad in Informatics (NOI) 2025. 
+
+Dave Bryan Tanady earned a Bronze medal, while Tran Thien Tri David secured an impressive Silver medal, showcasing their strong programming and problem-solving skills in this highly competitive national contest."
+                    data-link="https://noisg.comp.nus.edu.sg/noi/">
+                    <h3>NOI 2025</h3>
+                    <p>1 Silver medalist and 1 Bronze medalist<br>click for details</p>
+                </div>
+
+                <div class="fade-up-element highlight-card"
+                    data-title="NOI 2024" 
+                    data-desc="The Singapore National Olympiad in Informatics (NOI) is hosted by School of Computing (SoC) of National University of Singapore (NUS). NOI consists of a five-hours session in which each contestant is required to individually solve and program a solution to each of the four to five programming tasks (with subtasks of varying difficulties). The solutions are judged according to their correctness (i.e. whether they produce the correct answers) as well as the resources used (i.e. producing the answers within a time, memory, and/or other special limits).<br>
+
+The following students were selected for NOI Finals and obtained awards:
+
+<br>- Bryan Tan Boon Jun (Silver award)<br>
+
+<br>- Nguyen Phuc Chuong (Silver award)<br>
+
+<br>- Paphangkorn Soponthammapan (Bronze award)<br><br>
+You can view the NOI problems in the GitHub repositories here:<br>
+
+<a style='color: #03cafc;' href='https://github.com/noisg/noi-2024-final'>2024 Final Round</a><br>
+
+<a style='color: #03cafc;' href='https://github.com/noisg/noi-2024-prelim'>2024 Preliminary Round</a><br>
+
+<a style='color: #03cafc;' href='https://github.com/noisg/noi_2023/'>2023</a><br>
+
+<a style='color: #03cafc;' href='https://github.com/noisg/noi_2022_finals'>2022</a><br>
+
+<a style='color: #03cafc;' href='https://github.com/noisg/sg_noi_archive'>Archives</a>"
+data-link="https://noisg.comp.nus.edu.sg/noi/">
+                    <h3>NOI 2024</h3>
+                    <p>2 Silver medalist and 1 Bronze medalist<br>click for details</p>
+                </div>             
+            </div>
+        </div>
     </div>
 
-    <!-- external JS -->
-    <script src="js/welcome.js"></script>
+    <div class="scroll-down-wrapper" id="scrollArrow">
+        <div class="scroll-arrow"></div>
+    </div>
+
+    <div id="detailsModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            
+            <div class="modal-image-wrapper">
+                <img id="modalImg" src="" alt="Achievement Image">
+                <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+                <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+            </div>
+            
+            <div class="modal-text-wrapper">
+                <div class="modal-header">
+                    <h3 id="modalTitle">Title Here</h3>
+                    <a id="modalLinkBtn" href="#" target="_blank" class="external-link-btn">
+                        Visit Website ↗
+                    </a>
+                </div>
+                
+                <div id="modalDesc">Description goes here...</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/welcome.js') }}"></script>
 </body>
 </html>
