@@ -310,7 +310,7 @@ body::before {
     line-height: 1.6;
 }
 
-/* Long Section Card (CS50, AI) */
+/* Long Section Card */
 .long-section {
     width: 90%;
     max-width: 1000px;
@@ -331,9 +331,9 @@ body::before {
     margin-bottom: 40px;
     font-size: 2.2rem;
     
-    /* UPDATED: Removed the border line */
-    border-bottom: none; 
-    padding-bottom: 0;
+    /* ADDED !important TO FORCE OVERRIDE */
+    border-bottom: none !important; 
+    padding-bottom: 0 !important;
 }
 
 /* Flex Container */
@@ -405,13 +405,12 @@ body::before {
 
     .section-image {
         width: 100%;
-        
-        /* UPDATED: Increased spacing so it's not crammed */
-        margin-bottom: 30px; 
+        /* ADDED !important TO FORCE OVERRIDE */
+        margin-bottom: 30px !important; 
     }
     
     .section-image img {
-        max-width: 80%; /* Slightly larger for better visibility */
+        max-width: 80%; 
     }
 
     .page-title {
