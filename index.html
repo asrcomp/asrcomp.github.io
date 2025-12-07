@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/welcome.css') }}">
+    <link rel="stylesheet" href="css/welcome.css">
 </head>
 <body>
 
@@ -15,6 +15,7 @@
         <div class="navbar-logo">ASR</div>
         <div class="desktop-nav-links">
             <a href="about.html">About</a>
+            <a href="experience.html">The Experience</a>
             <a href="opportunities.html">Opportunities</a>
             <a href="resources.html">Learning Resources</a>
         </div>
@@ -28,7 +29,6 @@
         <span class="close-btn" onclick="toggleMobileMenu()">×</span>
         <ul>
             <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
-            <li><a href="experience.html" onclick="toggleMobileMenu()">The Experience</a></li>
             <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
             <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
         </ul>
@@ -75,7 +75,7 @@ Members:<br>
 - Re Zhuo Yufeng<br>
 - Daniyal Mikhail Bin Rizal<br>
 - Le Ngyuen Thanh Minh" 
-                     data-images="{{ url_for('static', filename='images/image_3.jpg') }},{{ url_for('static', filename='images/image_4.jpg') }},{{ url_for('static', filename='images/image_5.jpg') }},{{ url_for('static', filename='images/image_6.jpg') }}">
+                     data-images="images/image_3.jpg,images/image_4.jpg,images/image_5.jpg,images/image_6.jpg">
                      <h3>Cyberthon 2025🛡️</h3>
                      <p>Achieved 10th place<br>click for details</p>
                 </div>
@@ -88,7 +88,7 @@ This year, 628 participants teamed up in groups of four to tackle a series of de
 
 Despite facing stiff competition from other schools, one of our ASR teams ("TI-84 CE Python") achieved an impressive 8th place finish, a highly remarkable achievement!'
                      data-link="https://cyberthon.hci.edu.sg/"
-                     data-images="{{ url_for('static', filename='images/image_15.jpg') }},{{ url_for('static', filename='images/image_16.jpg') }}">
+                     data-images="images/image_15.jpg,images/image_16.jpg">
                      <h3>Cyberthon 2024</h3>
                      <p>Achieved 8th place<br>click for details</p>
                 </div>
@@ -101,7 +101,7 @@ This year's competition saw participation of many teams from 16 Junior Colleges 
 
 On August 17, 2024, the team members presented their ideas to a panel of judges and achieved an impressive 2nd place in the Finals. Congratulations to the team! 😄"
                      data-link="https://www.comp.nus.edu.sg/humanity/"
-                     data-images="{{ url_for('static', filename='images/image_10.jpg') }},{{ url_for('static', filename='images/image_11.jpg') }}">
+                     data-images="images/image_10.jpg,images/image_11.jpg">
                      <h3>NUS MUFG DELL HumanITy Challenge 2024</h3>
                      <p>Placed 2nd in finals<br>click for details</p>
                 </div>
@@ -110,7 +110,7 @@ On August 17, 2024, the team members presented their ideas to a panel of judges 
                      data-title="BlahajCTF 2024🦈" 
                      data-desc="TThis is a fun Blahaj-themed Capture-The-Flag (CTF) competition! Those team members who qualify for the Finals received an IKEA Blahaj each. A number of ASR students participated in this and performed really well in conquering the challenges and entered the Finals 😎. It was indeed a fun experience for the participants to work in teams and tackle those cybersecurity-related challenges." 
                      data-link="https://blahaj.sg"
-                     data-images="{{ url_for('static', filename='images/image_8.jpg') }},{{ url_for('static', filename='images/image_9.jpg') }}">
+                     data-images="images/image_8.jpg,images/image_9.jpg">
                      <h3>BlahajCTF 2024</h3>
                      <p>click for details</p>
                 </div>
@@ -120,7 +120,7 @@ On August 17, 2024, the team members presented their ideas to a panel of judges 
                     data-desc="A team of computing students participated in the Swift Explorers App Development challenge, organised by Crescent Girls School (CGS) and School of Science and Technology (SST). Through the programme, they explored Swift coding on iPad and used that knowledge to develop a Hawker Makan app that provides comprehensive information that patrons would find helpful when visiting the hawker centres.
 
 Many of them were not familiar with Swift Playgrounds but got to learn how to use it while developing the prototype of the app. The challenge culminated with a celebration event on 14 August 2024, where the teams presented their prototypes to other participants at CGS." 
-                    data-images="{{ url_for('static', filename='images/image_12.jpg') }},{{ url_for('static', filename='images/image_13.jpg') }},{{ url_for('static', filename='images/image_14.jpg') }}">
+                    data-images="images/image_12.jpg,images/image_13.jpg,images/image_14.jpg">
                     <h3>Swift Explorers App Development Challenge 2024</h3>
                     <p>click for details</p>
                 </div>
@@ -130,7 +130,7 @@ Many of them were not familiar with Swift Playgrounds but got to learn how to us
                     data-desc="The inaugural National Olympiad in Artificial Intelligence (NOAI) 2025, jointly organised by AI Singapore and Nanyang Technological University (NTU), brought together over 120 talented students from 20 schools across Singapore to compete in the nation’s premier AI competition. NOAI is designed to uncover, inspire, and empower the next generation of AI innovators, providing a rigorous platform for students to demonstrate their skills in areas such as Machine Learning, Natural Language Processing, Computer Vision, and Programming.
 
 We are proud to share that three of our students - Le Nguyen Thanh Minh, Paphangkorn Soponthammapan, and Tai Jia Sheng - distinguished themselves as Top 60 finalists in this national olympiad. Their achievement highlights their dedication and aptitude in AI, as well as their readiness to tackle real-world challenges in this rapidly evolving field." 
-                    data-images="{{ url_for('static', filename='images/image_7.jpg') }}">
+                    data-images="images/image_7.jpg">
                     <h3>National Olympiad in Artificial Intelligence (NOAI) 2025</h3>
                     <p>Were amongst Top 60 finalists<br>click for details</p>
                 </div>
@@ -203,6 +203,6 @@ data-link="https://noisg.comp.nus.edu.sg/noi/">
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/welcome.js') }}"></script>
+    <script src="js/welcome.js"></script>
 </body>
 </html>
