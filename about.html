@@ -11,6 +11,22 @@
         body::before {
             background-image: url('images/background.gif');
         }
+
+        #main-content-wrapper {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 140px 20px 50px;
+        }
+
+        @media (max-width: 768px) {
+            #main-content-wrapper {
+                padding-top: 120px;
+            }
+        }
     </style>
 </head>
 
@@ -19,8 +35,8 @@
         <div class="navbar-logo">ASR</div>
 
         <div class="desktop-nav-links">
+            <a href="index.html">Home</a>
             <a href="about.html">About</a>
-            <a href="experience.html">The Experience</a>
             <a href="opportunities.html">Opportunities</a>
             <a href="resources.html">Learning Resources</a>
         </div>
@@ -34,141 +50,143 @@
     <div class="mobile-menu" id="mobileMenu">
         <span class="close-btn" onclick="toggleMobileMenu()">×</span>
         <ul>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
             <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
-            <li><a href="experience.html" onclick="toggleMobileMenu()">The Experience</a></li>
             <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
             <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
         </ul>
     </div>
 
-    <h1>About H2 Computing</h1>
-    <h3>Learn more about our syllabus and the dedicated team behind the programme</h3>
+    <div id="main-content-wrapper">
+        <h1>About H2 Computing</h1>
+        <h3>Learn more about our syllabus and the dedicated team behind the programme</h3>
 
-    <h2>Syllabus</h2>
+        <h2>Syllabus</h2>
 
-    <hr>
+        <hr>
 
-    <div class="carousel-container fade-up-element">
-        <div class="carousel-track-container">
-            <!-- Slide 1 -->
-            <div class="carousel-slide current-slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-image-section">
-                        <img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="Slide 1">
+        <div class="carousel-container fade-up-element">
+            <div class="carousel-track-container">
+                <!-- Slide 1 -->
+                <div class="carousel-slide current-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="Slide 1">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Slide 1 Title</h2>
+                            <ul class="bullet-list">
+                                <li>Point A</li>
+                                <li>Point B</li>
+                                <li>Point C</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="slide-text-section">
-                        <h2>Slide 1 Title</h2>
-                        <ul class="bullet-list">
-                            <li>Point A</li>
-                            <li>Point B</li>
-                            <li>Point C</li>
-                        </ul>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Slide 2">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Slide 2 Title</h2>
+                            <ul class="bullet-list">
+                                <li>Point 1</li>
+                                <li>Point 2</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="Slide 3">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Slide 3 Title</h2>
+                            <ul class="bullet-list">
+                                <li>First</li>
+                                <li>Second</li>
+                                <li>Third</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-image-section">
-                        <img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Slide 2">
-                    </div>
-                    <div class="slide-text-section">
-                        <h2>Slide 2 Title</h2>
-                        <ul class="bullet-list">
-                            <li>Point 1</li>
-                            <li>Point 2</li>
-                        </ul>
-                    </div>
+            <div class="carousel-nav">
+                <button class="nav-dot current-dot" data-slide-index="0"></button>
+                <button class="nav-dot" data-slide-index="1"></button>
+                <button class="nav-dot" data-slide-index="2"></button>
+            </div>
+
+            <button class="carousel-button prev" id="prevButton">&#10094;</button>
+            <button class="carousel-button next" id="nextButton">&#10095;</button>
+        </div>
+
+        <h2>Assessment</h2>
+
+        <hr>
+        
+        <div class="assessment-box fade-up-element">
+            <h3>Exam Requirements</h3>
+            <ul class="requirement-list">
+                <li>Paper 1: Multiple choice and short answer (1.5 hours)</li>
+                <li>Paper 2: Practical programming tasks (2 hours)</li>
+                <li>Paper 3: Case study analysis (1.5 hours)</li>
+                <li>Coursework: Project submission and presentation</li>
+                <li>Minimum 40% required to pass each paper</li>
+            </ul>
+        </div>
+
+        <h2>Teachers</h2>
+
+        <hr>
+
+        <div class="teachers-grid fade-up-element">
+            <div class="teacher-card">
+                <div class="teacher-image">
+                    <img src="{{ url_for('static', filename='images/teacher1.jpg') }}" alt="Teacher 1">
                 </div>
+                <h3>Mr. Smith</h3>
+                <p class="teacher-role">Lead Computing Instructor</p>
+                <p class="teacher-bio">Specializes in algorithms and data structures with 8 years of teaching experience.</p>
             </div>
 
-            <!-- Slide 3 -->
-            <div class="carousel-slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-image-section">
-                        <img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="Slide 3">
-                    </div>
-                    <div class="slide-text-section">
-                        <h2>Slide 3 Title</h2>
-                        <ul class="bullet-list">
-                            <li>First</li>
-                            <li>Second</li>
-                            <li>Third</li>
-                        </ul>
-                    </div>
+            <div class="teacher-card">
+                <div class="teacher-image">
+                    <img src="{{ url_for('static', filename='images/teacher2.jpg') }}" alt="Teacher 2">
                 </div>
+                <h3>Ms. Johnson</h3>
+                <p class="teacher-role">Programming & Web Development</p>
+                <p class="teacher-bio">Expert in Python and web technologies. Passionate about hands-on learning.</p>
             </div>
-        </div>
 
-        <div class="carousel-nav">
-            <button class="nav-dot current-dot" data-slide-index="0"></button>
-            <button class="nav-dot" data-slide-index="1"></button>
-            <button class="nav-dot" data-slide-index="2"></button>
-        </div>
-
-        <button class="carousel-button prev" id="prevButton">&#10094;</button>
-        <button class="carousel-button next" id="nextButton">&#10095;</button>
-    </div>
-
-    <h2>Assessment</h2>
-
-    <hr>
-    
-    <div class="assessment-box fade-up-element">
-        <h3>Exam Requirements</h3>
-        <ul class="requirement-list">
-            <li>Paper 1: Multiple choice and short answer (1.5 hours)</li>
-            <li>Paper 2: Practical programming tasks (2 hours)</li>
-            <li>Paper 3: Case study analysis (1.5 hours)</li>
-            <li>Coursework: Project submission and presentation</li>
-            <li>Minimum 40% required to pass each paper</li>
-        </ul>
-    </div>
-
-    <h2>Teachers</h2>
-
-    <hr>
-
-    <div class="teachers-grid fade-up-element">
-        <div class="teacher-card">
-            <div class="teacher-image">
-                <img src="{{ url_for('static', filename='images/teacher1.jpg') }}" alt="Teacher 1">
+            <div class="teacher-card">
+                <div class="teacher-image">
+                    <img src="{{ url_for('static', filename='images/teacher3.jpg') }}" alt="Teacher 3">
+                </div>
+                <h3>Mr. Patel</h3>
+                <p class="teacher-role">Cybersecurity & Networks</p>
+                <p class="teacher-bio">10+ years in IT security. Brings real-world industry experience to the classroom.</p>
             </div>
-            <h3>Mr. Smith</h3>
-            <p class="teacher-role">Lead Computing Instructor</p>
-            <p class="teacher-bio">Specializes in algorithms and data structures with 8 years of teaching experience.</p>
-        </div>
 
-        <div class="teacher-card">
-            <div class="teacher-image">
-                <img src="{{ url_for('static', filename='images/teacher2.jpg') }}" alt="Teacher 2">
+            <div class="teacher-card">
+                <div class="teacher-image">
+                    <img src="{{ url_for('static', filename='images/teacher4.jpg') }}" alt="Teacher 4">
+                </div>
+                <h3>Dr. Chen</h3>
+                <p class="teacher-role">Database & Systems Design</p>
+                <p class="teacher-bio">PhD in Computer Science. Mentors students through advanced project work.</p>
             </div>
-            <h3>Ms. Johnson</h3>
-            <p class="teacher-role">Programming & Web Development</p>
-            <p class="teacher-bio">Expert in Python and web technologies. Passionate about hands-on learning.</p>
-        </div>
-
-        <div class="teacher-card">
-            <div class="teacher-image">
-                <img src="{{ url_for('static', filename='images/teacher3.jpg') }}" alt="Teacher 3">
-            </div>
-            <h3>Mr. Patel</h3>
-            <p class="teacher-role">Cybersecurity & Networks</p>
-            <p class="teacher-bio">10+ years in IT security. Brings real-world industry experience to the classroom.</p>
-        </div>
-
-        <div class="teacher-card">
-            <div class="teacher-image">
-                <img src="{{ url_for('static', filename='images/teacher4.jpg') }}" alt="Teacher 4">
-            </div>
-            <h3>Dr. Chen</h3>
-            <p class="teacher-role">Database & Systems Design</p>
-            <p class="teacher-bio">PhD in Computer Science. Mentors students through advanced project work.</p>
         </div>
     </div>
 
-    <script src="/js/syllabus.js""></script>
+    <script src="/js/about.js""></script>
     <script>
         /* Fade-up animation with Intersection Observer */
         const fadeUpElements = document.querySelectorAll('.fade-up-element');
@@ -197,6 +215,8 @@
 </body>
 
 </html>
+
+
 
 
 
