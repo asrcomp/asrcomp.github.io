@@ -3,219 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opportunities - H2 Computing @ ASRJC</title>
-    <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Opportunities</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/opportunities.css') }}">
+    
+    <style>
+        body::before {
+            background-image: url('{{ url_for("static", filename="images/background.gif") }}');
+        }
+    </style>
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-text">ASRJC Computing</span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Welcome</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="experience.html" class="nav-link">The Experience</a></li>
-                <li><a href="opportunities.html" class="nav-link active">Opportunities</a></li>
-                <li><a href="resources.html" class="nav-link">Learning Resources</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <nav class="top-navbar">
+        <div class="navbar-logo">ASR</div>
+
+        <div class="desktop-nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="resources.html">Learning Resources</a>
         </div>
+
+        <button class="nav-button" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Opportunities</h1>
-            <p>Competitions, scholarships, and pathways to excel in computing</p>
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-btn" onclick="toggleMobileMenu()">×</span>
+        <ul>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
+            <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
+        </ul>
+    </div>
+
+    <div id="main-content-wrapper">
+        <h1>Competition Opportunities</h1>
+        <h3>Showcase your skills and compete with the best</h3>
+
+        <!-- Competition 1 -->
+        <div class="competition-item fade-up-element">
+            <div class="competition-image">
+                <img src="{{ url_for('static', filename='images/competition1.jpg') }}" alt="Competition 1">
+            </div>
+            <div class="competition-text">
+                <h2>National Coding Championship</h2>
+                <p>Challenge yourself against top programmers from across the country. This prestigious competition tests your algorithmic thinking and problem-solving skills across multiple rounds.</p>
+                <ul class="competition-details">
+                    <li><strong>Date:</strong> March 15-17, 2024</li>
+                    <li><strong>Format:</strong> Individual & Team categories</li>
+                    <li><strong>Prize Pool:</strong> $50,000+</li>
+                    <li><strong>Registration:</strong> Open until February 28</li>
+                </ul>
+            </div>
         </div>
-    </section>
 
-    <!-- Main Content -->
-    <main class="container">
-        <section class="content-section">
-            <h2>🏆 Computing Competitions</h2>
-            <p>
-                Challenge yourself and showcase your skills by participating in various computing 
-                competitions. These platforms provide valuable experience and recognition for talented 
-                students.
-            </p>
+        <hr class="competition-divider">
 
-            <div class="opportunity-cards">
-                <div class="opportunity-card">
-                    <h3>Singapore Olympiad in Informatics (SOI)</h3>
-                    <div class="opportunity-badge">National Competition</div>
-                    <p>
-                        The premier competitive programming competition in Singapore. Top performers may 
-                        represent Singapore at the International Olympiad in Informatics (IOI).
-                    </p>
-                    <ul>
-                        <li>Open to all JC students</li>
-                        <li>Focus on algorithms and problem-solving</li>
-                        <li>Training provided for interested students</li>
-                        <li>Held annually around March-May</li>
-                    </ul>
-                </div>
-
-                <div class="opportunity-card">
-                    <h3>National Olympiad in Informatics (NOI)</h3>
-                    <div class="opportunity-badge">National Competition</div>
-                    <p>
-                        A challenging programming competition that tests algorithmic thinking and 
-                        implementation skills across multiple rounds.
-                    </p>
-                    <ul>
-                        <li>Multiple competition categories</li>
-                        <li>Excellent preparation for university-level CS</li>
-                        <li>Recognition from universities and employers</li>
-                    </ul>
-                </div>
-
-                <div class="opportunity-card">
-                    <h3>International Bebras Challenge</h3>
-                    <div class="opportunity-badge">International Competition</div>
-                    <p>
-                        Test your computational thinking skills through engaging logic puzzles and 
-                        problem-solving challenges.
-                    </p>
-                    <ul>
-                        <li>Accessible to all skill levels</li>
-                        <li>Develops logical reasoning</li>
-                        <li>Certificates for top performers</li>
-                    </ul>
-                </div>
-
-                <div class="opportunity-card">
-                    <h3>Build-On Singapore Hackathons</h3>
-                    <div class="opportunity-badge">Industry Events</div>
-                    <p>
-                        Participate in hackathons organized by tech companies to solve real-world 
-                        problems and network with industry professionals.
-                    </p>
-                    <ul>
-                        <li>Team-based challenges</li>
-                        <li>Mentorship from industry experts</li>
-                        <li>Prizes and internship opportunities</li>
-                    </ul>
-                </div>
+        <!-- Competition 2 -->
+        <div class="competition-item fade-up-element">
+            <div class="competition-text">
+                <h2>International Hackathon</h2>
+                <p>Build innovative solutions in 48 hours alongside developers worldwide. This global event brings together creative minds to solve real-world problems through technology.</p>
+                <ul class="competition-details">
+                    <li><strong>Date:</strong> April 20-22, 2024</li>
+                    <li><strong>Format:</strong> Team-based (4-6 members)</li>
+                    <li><strong>Prize Pool:</strong> $100,000+</li>
+                    <li><strong>Location:</strong> Hybrid (In-person & Online)</li>
+                </ul>
             </div>
-        </section>
-
-        <section class="content-section scholarship-section">
-            <h2>💰 CSIT Scholarship Programme</h2>
-            <p>
-                The Computing & Information Technology (CSIT) Scholarship is awarded by the Centre 
-                for Strategic Infocomm Technologies to nurture Singapore's cybersecurity and infocomm 
-                technology talent.
-            </p>
-
-            <div class="scholarship-details">
-                <div class="scholarship-card">
-                    <h3>What's Covered</h3>
-                    <ul>
-                        <li>Full tuition fees</li>
-                        <li>Maintenance allowance</li>
-                        <li>Pre-studies allowance</li>
-                        <li>Return airfare (for overseas studies)</li>
-                        <li>Accommodation allowance (for overseas studies)</li>
-                        <li>Computer allowance</li>
-                    </ul>
-                </div>
-
-                <div class="scholarship-card">
-                    <h3>Eligibility Criteria</h3>
-                    <ul>
-                        <li>Singapore Citizen</li>
-                        <li>Good academic records</li>
-                        <li>Strong interest in computing and technology</li>
-                        <li>Leadership qualities and co-curricular activities</li>
-                        <li>Accepted into approved university programmes</li>
-                    </ul>
-                </div>
-
-                <div class="scholarship-card">
-                    <h3>Career Prospects</h3>
-                    <ul>
-                        <li>Work with CSIT upon graduation</li>
-                        <li>Cybersecurity and ICT roles</li>
-                        <li>Cutting-edge technology projects</li>
-                        <li>National security contributions</li>
-                        <li>Continuous learning and development</li>
-                    </ul>
-                </div>
+            <div class="competition-image">
+                <img src="{{ url_for('static', filename='images/competition2.jpg') }}" alt="Competition 2">
             </div>
-
-            <div class="info-box">
-                <h4>Application Process</h4>
-                <p>
-                    Applications typically open in February each year. Students should prepare their 
-                    A-Level results, personal statements, and undergo interviews. Having a strong 
-                    H2 Computing portfolio and participation in computing competitions can strengthen 
-                    your application.
-                </p>
-                <p>
-                    <strong>Learn more:</strong> Visit the official CSIT website at 
-                    <a href="https://www.csit.gov.sg" target="_blank">www.csit.gov.sg</a>
-                </p>
-            </div>
-        </section>
-
-        <section class="content-section">
-            <h2>🎯 Other Opportunities</h2>
-            
-            <div class="other-opportunities">
-                <div class="opp-item">
-                    <h3>University Computing Programmes</h3>
-                    <p>
-                        H2 Computing provides strong preparation for computer science, information systems, 
-                        and related programmes at local and overseas universities including NUS, NTU, SMU, 
-                        SUTD, and top universities worldwide.
-                    </p>
-                </div>
-
-                <div class="opp-item">
-                    <h3>Tech Industry Internships</h3>
-                    <p>
-                        Students with strong computing skills are well-positioned for internships at tech 
-                        companies, startups, and research institutions during university breaks.
-                    </p>
-                </div>
-
-                <div class="opp-item">
-                    <h3>Computing Enrichment Programmes</h3>
-                    <p>
-                        Participate in workshops, bootcamps, and masterclasses organized by universities 
-                        and tech companies to deepen your knowledge in specialized areas like AI, 
-                        cybersecurity, and game development.
-                    </p>
-                </div>
-
-                <div class="opp-item">
-                    <h3>Student Tech Community</h3>
-                    <p>
-                        Join our vibrant computing community where students collaborate on projects, 
-                        share knowledge, and mentor each other in various programming languages and 
-                        technologies.
-                    </p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Anderson Serangoon Junior College. All rights reserved.</p>
-            <p>H2 Computing Department</p>
         </div>
-    </footer>
 
-    <script src="js/main.js"></script>
+        <hr class="competition-divider">
+
+        <!-- Competition 3 -->
+        <div class="competition-item fade-up-element">
+            <div class="competition-image">
+                <img src="{{ url_for('static', filename='images/competition3.jpg') }}" alt="Competition 3">
+            </div>
+            <div class="competition-text">
+                <h2>Web Development Showcase</h2>
+                <p>Display your web development skills by creating stunning, functional websites. Compete for recognition and prizes in front of industry experts and potential employers.</p>
+                <ul class="competition-details">
+                    <li><strong>Date:</strong> May 10, 2024</li>
+                    <li><strong>Format:</strong> Individual submissions</li>
+                    <li><strong>Categories:</strong> Design, UX, Performance</li>
+                    <li><strong>Judges:</strong> Tech industry leaders</li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="competition-divider">
+
+        <!-- Competition 4 -->
+        <div class="competition-item fade-up-element">
+            <div class="competition-text">
+                <h2>AI & Machine Learning Challenge</h2>
+                <p>Push the boundaries of artificial intelligence. Build ML models to solve complex real-world challenges. Network with AI researchers and potential mentors.</p>
+                <ul class="competition-details">
+                    <li><strong>Date:</strong> June 1-30, 2024</li>
+                    <li><strong>Format:</strong> Individual & Team (up to 3)</li>
+                    <li><strong>Prize Pool:</strong> $75,000+</li>
+                    <li><strong>Mentorship:</strong> Industry experts available</li>
+                </ul>
+            </div>
+            <div class="competition-image">
+                <img src="{{ url_for('static', filename='images/competition4.jpg') }}" alt="Competition 4">
+            </div>
+        </div>
+
+        <h2>Scholarships & Funding</h2>
+        <hr>
+
+        <div class="scholarships-grid fade-up-element">
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <h3>Merit Excellence Scholarship</h3>
+                    <p class="scholarship-amount">$10,000/year</p>
+                </div>
+                <p class="scholarship-description">Awarded to students demonstrating exceptional academic performance and leadership in computing.</p>
+                <ul class="scholarship-requirements">
+                    <li>GPA 3.8 or higher</li>
+                    <li>Strong coding portfolio</li>
+                    <li>Leadership experience</li>
+                </ul>
+                <button class="scholarship-btn">Learn More</button>
+            </div>
+
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <h3>Tech Diversity Grant</h3>
+                    <p class="scholarship-amount">$8,000/year</p>
+                </div>
+                <p class="scholarship-description">Supporting underrepresented groups in computing to build a more diverse tech industry.</p>
+                <ul class="scholarship-requirements">
+                    <li>Demonstrated commitment to tech</li>
+                    <li>Essay on diversity in tech</li>
+                    <li>Community involvement</li>
+                </ul>
+                <button class="scholarship-btn">Learn More</button>
+            </div>
+
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <h3>Innovation Fund</h3>
+                    <p class="scholarship-amount">$5,000-$15,000</p>
+                </div>
+                <p class="scholarship-description">Funds for students with groundbreaking project ideas that could impact society.</p>
+                <ul class="scholarship-requirements">
+                    <li>Project proposal required</li>
+                    <li>Innovation potential</li>
+                    <li>Team or individual eligible</li>
+                </ul>
+                <button class="scholarship-btn">Learn More</button>
+            </div>
+
+            <div class="scholarship-card">
+                <div class="scholarship-header">
+                    <h3>Industry Partner Scholarship</h3>
+                    <p class="scholarship-amount">$12,000/year</p>
+                </div>
+                <p class="scholarship-description">Sponsored by leading tech companies seeking future talent in their organizations.</p>
+                <ul class="scholarship-requirements">
+                    <li>Strong technical skills</li>
+                    <li>Internship interest</li>
+                    <li>Professional development focus</li>
+                </ul>
+                <button class="scholarship-btn">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('mobile-menu-active');
+
+            if (mobileMenu.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        /* Fade-up animation */
+        const fadeUpElements = document.querySelectorAll('.fade-up-element');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+        fadeUpElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 </body>
+
 </html>
