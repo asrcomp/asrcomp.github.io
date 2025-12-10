@@ -30,34 +30,7 @@
     </style>
 </head>
 
-<body>
-    <nav class="top-navbar">
-        <div class="navbar-logo">ASR</div>
-
-        <div class="desktop-nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="opportunities.html">Opportunities</a>
-            <a href="resources.html">Learning Resources</a>
-        </div>
-
-        <button class="nav-button" onclick="toggleMobileMenu()">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-        </button>
-    </nav>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <span class="close-btn" onclick="toggleMobileMenu()">×</span>
-        <ul>
-            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
-            <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
-            <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
-            <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
-        </ul>
-    </div>
-
-    <div id="main-content-wrapper">
+<div id="main-content-wrapper">
         <h1>About H2 Computing</h1>
         <h3>Learn more about our syllabus and the dedicated team behind the programme</h3>
 
@@ -71,19 +44,19 @@
                 <div class="carousel-slide current-slide">
                     <div class="slide-content-wrapper">
                         <div class="slide-image-section">
-                            <img src="{{ url_for('static', filename='images/slide1.jpg') }}" alt="Slide 1">
+                            <img src="{{ url_for('static', filename='images/coding.jpeg') }}" alt="Slide 1">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Slide 1 Title</h2>
+                            <h2>Programming Concepts</h2>
                             <ul class="bullet-list">
-                                <li>Point A</li>
-                                <li>Point B</li>
-                                <li>Point C</li>
+                                <li>Python programming</li>
+                                <li>Functions, modules, debugging</li>
+                                <li>Object-oriented programming</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="slide-content-wrapper">
@@ -91,10 +64,11 @@
                             <img src="{{ url_for('static', filename='images/slide2.jpg') }}" alt="Slide 2">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Slide 2 Title</h2>
+                            <h2>Data Structures & Algorithms</h2>
                             <ul class="bullet-list">
-                                <li>Point 1</li>
-                                <li>Point 2</li>
+                                <li>Stacks, queues, linked lists</li>
+                                <li>Trees, hash tables</li>
+                                <li>Searching & sorting algorithms</li>
                             </ul>
                         </div>
                     </div>
@@ -107,11 +81,45 @@
                             <img src="{{ url_for('static', filename='images/slide3.jpg') }}" alt="Slide 3">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Slide 3 Title</h2>
+                            <h2>Basic Web Development</h2>
                             <ul class="bullet-list">
-                                <li>First</li>
-                                <li>Second</li>
-                                <li>Third</li>
+                                <li>Web application architecture</li>
+                                <li>HTML/CSS basics</li>
+                                <li>Flask framework</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="{{ url_for('static', filename='images/slide4.jpg') }}" alt="Slide 4">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Cybersecurity & Networks</h2>
+                            <ul class="bullet-list">
+                                <li>Network protocols & architecture</li>
+                                <li>Encryption & authentication</li>
+                                <li>Threat analysis & protection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="{{ url_for('static', filename='images/slide5.jpg') }}" alt="Slide 5">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Databases & SQL</h2>
+                            <ul class="bullet-list">
+                                <li>Database design & normalization</li>
+                                <li>SQL queries & optimization</li>
+                                <li>Data management best practices</li>
                             </ul>
                         </div>
                     </div>
@@ -122,6 +130,8 @@
                 <button class="nav-dot current-dot" data-slide-index="0"></button>
                 <button class="nav-dot" data-slide-index="1"></button>
                 <button class="nav-dot" data-slide-index="2"></button>
+                <button class="nav-dot" data-slide-index="3"></button>
+                <button class="nav-dot" data-slide-index="4"></button>
             </div>
 
             <button class="carousel-button prev" id="prevButton">&#10094;</button>
@@ -184,6 +194,71 @@
                 <p class="teacher-bio">PhD in Computer Science. Mentors students through advanced project work.</p>
             </div>
         </div>
+
+        <h2>Frequently Asked Questions</h2>
+        <hr>
+
+        <div class="faq-container fade-up-element">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What are the prerequisites for H2 Computing?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>No prior programming experience is required! We welcome students from all backgrounds. A basic understanding of mathematics and logical thinking is helpful but not mandatory.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How many hours per week should I expect to study?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Most students dedicate 8-12 hours per week to coursework, including lectures, practical sessions, and independent study. This may vary depending on your learning pace and project complexity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What programming languages will I learn?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Our curriculum covers Python, SQL, HTML/CSS, and JavaScript. We focus on fundamental concepts that apply across all languages, so you'll be well-prepared for any language you encounter.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Are there internship opportunities?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! We partner with leading tech companies to offer internship and apprenticeship opportunities. Many of our students secure placements with top organizations during the course.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What happens after H2 Computing?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Graduates pursue diverse paths including university computer science programs, tech industry roles, or entrepreneurship. Our alumni network provides ongoing support and networking opportunities.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do you offer flexible learning options?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We offer both in-person and hybrid learning options to accommodate different schedules. Online resources are available 24/7 for self-paced learning.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="/js/about.js"></script>
@@ -215,6 +290,7 @@
 </body>
 
 </html>
+
 
 
 
