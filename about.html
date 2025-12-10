@@ -30,7 +30,33 @@
     </style>
 </head>
 
-<div id="main-content-wrapper">
+<body>
+    <nav class="top-navbar">
+        <a href="/index.html" class="navbar-logo">ASR</a>
+
+        <div class="desktop-nav-links">
+            <a href="/about.html">About</a>
+            <a href="/opportunities.html">Opportunities</a>
+            <a href="/resources.html">Learning Resources</a>
+        </div>
+
+        <button class="nav-button" onclick="toggleMobileMenu()">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <span class="close-btn" onclick="toggleMobileMenu()">×</span>
+        <ul>
+            <li><a href="/" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="/about.html" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="/opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
+            <li><a href="/resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
+        </ul>
+    </div>
+
+    <div id="main-content-wrapper">
         <h1>About H2 Computing</h1>
         <h3>Learn more about our syllabus and the dedicated team behind the programme</h3>
 
@@ -290,6 +316,7 @@
 </body>
 
 </html>
+
 
 
 
