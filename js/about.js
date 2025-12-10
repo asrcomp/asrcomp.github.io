@@ -146,8 +146,31 @@ class FadeUpObserver {
     }
 }
 
+// FAQ Accordion
+class FAQAccordion {
+    constructor() {
+        this.items = document.querySelectorAll('.faq-item');
+        this.init();
+    }
+
+    init() {
+        this.items.forEach(item => {
+            const btn = item.querySelector('.faq-question');
+            btn?.addEventListener('click', () => this.toggle(item));
+        });
+    }
+
+    toggle(item) {
+        this.items.forEach(i => {
+            if (i !== item) i.classList.remove('open');
+        });
+        item.classList.toggle('open');
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     new Carousel();
     new FadeUpObserver();
+    new FAQAccordion();
 });
