@@ -53,26 +53,14 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     inset: 0 0 auto 0;
     padding: 15px 20px;
     background: transparent;
-    backdrop-filter: none;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.navbar-logo {
-    font-size: 1.5rem;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.navbar-logo:hover {
-    color: #4fb3d9;
-}
-
+.navbar-logo { font-size: 1.5rem; color: white; font-weight: bold; text-decoration: none; cursor: pointer; transition: color 0.3s; }
+.navbar-logo:hover { color: #4fb3d9; }
 .desktop-nav-links { display: flex; }
 .desktop-nav-links a { color: white; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
 .desktop-nav-links a:hover { color: #4fb3d9; }
@@ -126,10 +114,7 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     padding-bottom: 70px;
 }
 
-.carousel-track-container {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+.carousel-track-container { display: flex; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
 
 .carousel-slide {
     flex-shrink: 0;
@@ -143,65 +128,34 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     align-items: center;
     gap: 40px;
     border-radius: 18px;
-    margin: 0;
 }
 
-.slide-content-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
+.slide-content-wrapper { width: 100%; height: 100%; display: flex; align-items: center; gap: 40px; }
 
-.slide-image-section { 
-    flex: 0.5; 
-    min-height: 350px; 
-    order: 2;
-}
+.slide-image-section { flex: 0.5; min-height: 350px; order: 2; }
 .slide-image-section img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
 
-.slide-text-section { 
-    flex: 0.5; 
-    color: white; 
-    order: 1;
-}
+.slide-text-section { flex: 0.5; color: white; order: 1; }
 .slide-text-section h2 { font-size: 2.2em; margin: 0 0 15px 0; text-align: left; color: white; }
-.bullet-list { list-style: none; padding: 0; }
-.bullet-list li { padding: 8px 0 8px 25px; position: relative; color: rgba(255,255,255,0.9); }
-.bullet-list li:before { content: "•"; position: absolute; left: 0; color: #4fb3d9; font-weight: bold; }
 
-.carousel-nav {
+.bullet-list, .requirement-list, .teacher-bio { list-style: none; padding: 0; margin: 0; }
+.bullet-list li, .requirement-list li, .teacher-bio li, .requirement-list li ul li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: rgba(255,255,255,0.9);
+}
+.bullet-list li:before, .requirement-list li:before, .teacher-bio li:before, .requirement-list li ul li:before {
+    content: "✓";
     position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    z-index: 5;
+    left: 0;
+    color: #4fb3d9;
 }
 
-.nav-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.4);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+.carousel-nav { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; gap: 8px; z-index: 5; }
 
-.nav-dot:hover {
-    background: rgba(255,255,255,0.7);
-    transform: scale(1.1);
-}
-
-.nav-dot.current-dot {
-    background: #4fb3d9;
-    width: 12px;
-    height: 12px;
-}
+.nav-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); border: none; cursor: pointer; transition: all 0.3s; }
+.nav-dot:hover { background: rgba(255,255,255,0.7); transform: scale(1.1); }
+.nav-dot.current-dot { background: #4fb3d9; width: 12px; height: 12px; }
 
 .carousel-button {
     position: absolute;
@@ -217,14 +171,11 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     z-index: 10;
     transition: background 0.3s;
 }
-
 .carousel-button:hover { background: rgba(0,0,0,0.9); }
 .carousel-button.prev { left: 15px; }
 .carousel-button.next { right: 15px; }
 
-/* ===================================================== */
 /* ASSESSMENT BOX */
-/* ===================================================== */
 .assessment-box {
     width: 90%;
     max-width: 1400px;
@@ -239,32 +190,44 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
 }
 
 .assessment-box h3 { font-size: 1.8em; margin: 0 0 25px 0; text-align: left; }
-.requirement-list { list-style: none; padding: 0; }
-.requirement-list li { padding: 12px 0 12px 35px; position: relative; color: rgba(255,255,255,0.9); border-bottom: 1px solid rgba(255,255,255,0.15); }
+.requirement-list li { border-bottom: 1px solid rgba(255,255,255,0.15); }
 .requirement-list li:last-child { border-bottom: none; }
-.requirement-list li:before { content: "✓"; position: absolute; left: 0; color: #4fb3d9; font-weight: bold; font-size: 1.3em; }
+.requirement-list li ul { padding: 8px 0 0 0; margin: 0; }
+.requirement-list li ul li { padding: 4px 0 4px 20px; border-bottom: none; color: rgba(255,255,255,0.8); font-size: 0.9em; }
 
-/* ===================================================== */
-/* TEACHERS SECTION */
-/* ===================================================== */
-.teachers-grid { width: 90%; max-width: 1400px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.teacher-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); border-radius: 18px; overflow: hidden; color: white; transition: transform 0.3s; }
+/* TEACHERS */
+.teachers-grid {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.teacher-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    overflow: hidden;
+    color: white;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
 .teacher-card:hover { transform: translateY(-8px); }
-.teacher-image { width: 100%; height: 280px; overflow: hidden; }
+.teacher-image { width: 100%; height: 300px; overflow: hidden; flex-shrink: 0; }
 .teacher-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
 .teacher-card:hover .teacher-image img { transform: scale(1.05); }
-.teacher-card h3 { font-size: 1.4em; margin: 15px 0 5px 0; padding: 0 15px; text-align: center; }
-.teacher-role { color: #4fb3d9; font-size: 0.9em; padding: 0 15px; text-align: center; }
-.teacher-bio { padding: 0 15px 15px; text-align: center; color: rgba(255,255,255,0.85); font-size: 0.9em; }
+.teacher-card h3 { font-size: 1.2em; margin: 12px; padding: 0; text-align: center; }
+.teacher-role { color: #4fb3d9; font-size: 0.85em; margin: 0 12px 8px; text-align: center; }
+.teacher-bio { padding: 0 12px 12px; color: rgba(255,255,255,0.85); font-size: 0.8em; line-height: 1.4; }
+.teacher-bio li { padding: 4px 0 4px 18px; }
 
-/* ===================================================== */
-/* FAQ SECTION */
-/* ===================================================== */
-.faq-container {
-    width: 90%;
-    max-width: 1400px;
-    margin: 40px auto;
-}
+/* FAQ */
+.faq-container { width: 90%; max-width: 1400px; margin: 40px auto; }
 
 .faq-item {
     background: rgba(255,255,255,0.1);
@@ -273,13 +236,10 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     border-radius: 12px;
     margin-bottom: 15px;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-.faq-item:hover {
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-}
+.faq-item:hover { background: rgba(255,255,255,0.15); box-shadow: 0 8px 22px rgba(0,0,0,0.18); }
 
 .faq-question {
     width: 100%;
@@ -294,75 +254,39 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-.faq-question:hover {
-    color: #4fb3d9;
-}
-
-.faq-icon {
-    font-size: 1.5em;
-    font-weight: bold;
-    transition: transform 0.3s ease;
-}
-
-.faq-item.open .faq-icon {
-    transform: rotate(45deg);
-}
+.faq-question:hover { color: #4fb3d9; }
+.faq-icon { font-size: 1.5em; font-weight: bold; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
 
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 20px;
+    opacity: 0;
 }
 
-.faq-item.open .faq-answer {
-    max-height: 500px;
-    padding: 0 20px 20px 20px;
-}
-
-.faq-answer p {
-    color: rgba(255,255,255,0.85);
-    line-height: 1.7;
-    font-size: 0.95em;
-    margin: 0;
-}
+.faq-item.open .faq-answer { max-height: 500px; padding: 0 20px 20px; opacity: 1; }
+.faq-answer p { color: rgba(255,255,255,0.85); line-height: 1.7; font-size: 0.95em; margin: 0; }
 
 /* ===================================================== */
 /* RESPONSIVE */
 /* ===================================================== */
 @media (max-width: 1024px) {
-    .teachers-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .teachers-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
     .nav-button { display: block; }
     .desktop-nav-links { display: none; }
-
-    #main-content-wrapper {
-        padding-top: 90px;
-    }
-
+    #main-content-wrapper { padding-top: 90px; }
     h1 { font-size: 2rem; }
     h2 { font-size: 1.6rem; }
-
-    .carousel-slide { 
-        flex-direction: column-reverse; 
-        padding: 30px; 
-        min-height: auto; 
-    }
-    .slide-image-section { 
-        flex: 1; 
-        min-height: 250px; 
-        order: auto;
-    }
-    .slide-text-section {
-        order: auto;
-    }
-
+    .carousel-slide { flex-direction: column-reverse; padding: 30px; min-height: auto; }
+    .slide-image-section { flex: 1; min-height: 250px; order: auto; }
+    .slide-text-section { order: auto; }
     .teachers-grid { grid-template-columns: 1fr; }
 }
