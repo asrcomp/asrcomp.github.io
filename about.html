@@ -192,11 +192,11 @@
         <h2>Teachers</h2>
 
         <hr>
-        
+
         <div class="teachers-grid fade-up-element">
             <div class="teacher-card">
                 <div class="teacher-image">
-                    <img src="/images/mrlam.png" alt="Teacher 1">
+                    <img src="{{ url_for('static', filename='images/mrlam.png') }}" alt="Teacher 1">
                 </div>
                 <h3>Mr Lam Meng Hwee</h3>
                 <p class="teacher-role">Teaching H2 Computing and H2 Further Mathematics in ASRJC</p>
@@ -209,7 +209,7 @@
 
             <div class="teacher-card">
                 <div class="teacher-image">
-                    <img src="/images/mrsteckwani.png" alt="Teacher 2">
+                    <img src="{{ url_for('static', filename='images/mrsteckwani.png') }}" alt="Teacher 2">
                 </div>
                 <h3>Mrs. Sundraes Teckwani</h3>
                 <p class="teacher-role">Teaching H2 Computing and H1 Mathematics in ASRJC</p>
@@ -302,8 +302,8 @@
             </div>
         </div>
     </div>
-    
-    <script src="/js/about.js"></script>
+
+    <script src="js/about.js"></script>
     <script>
         /* Fade-up animation with Intersection Observer */
         const fadeUpElements = document.querySelectorAll('.fade-up-element');
@@ -332,19 +332,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
