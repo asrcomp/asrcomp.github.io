@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bgImageUrl = card.dataset.bgImage;
         if (bgImageUrl) {
             // Set a CSS custom property on the element
-            card.style.setProperty('--bg-image', `url('${bgImageUrl}')`);
+            card.style.setProperty('--bg-image', `url('../${bgImageUrl}')`);
         }
     });
 
