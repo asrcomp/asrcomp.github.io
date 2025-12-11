@@ -104,20 +104,54 @@ body::before {
 }
 
 .highlight-card {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative; /* Essential for the ::before element */
+    /* Removed: background-color: rgba(255, 255, 255, 0.1); */
+    /* Removed: backdrop-filter: blur(5px); */
+    /* Removed: -webkit-backdrop-filter: blur(5px); */
+    /* Removed: border: 1px solid rgba(255, 255, 255, 0.15); */
+    
     border-radius: 12px;
     padding: 40px 20px;
     color: white;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     cursor: pointer; 
-    transition: background-color 0.3s, transform 0.3s;
+    transition: transform 0.3s;
+    overflow: hidden; /* To contain the pseudo-element */
 }
-.highlight-card:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+
+/* New: Background Image and Blur */
+.highlight-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1; /* Behind the content */
+    opacity: 0.5; /* Reduce opacity for better readability */
+    transition: opacity 0.3s, transform 0.3s;
+    
+    /* Set background properties based on the data attribute */
+    background-image: var(--bg-image); 
+    background-size: cover;
+    background-position: center;
+    
+    /* Apply the blur filter */
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    
+    pointer-events: none; /* Ignore clicks */
+}
+
+/* New: Content Wrapper to stay on top and have a slight dark overlay */
+.highlight-card h3, .highlight-card p {
+    position: relative;
+    z-index: 2; /* Over the ::before element */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); /* Add shadow for better contrast */
+}
+
+/* New: Hover effect */
+.highlight-card:hover::before {
+    opacity: 0.8; /* Slightly less transparent on hover */
+    transform: scale(1.05); /* Subtle zoom effect */
 }
 
 /* ===================================================== */
