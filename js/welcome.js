@@ -65,6 +65,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
+    /* ================================================= */
+    /* NEW: BACKGROUND IMAGE SETUP - INSERTED HERE       */
+    /* ================================================= */
+    highlightCards.forEach(card => {
+        const bgImageUrl = card.dataset.bgImage;
+        if (bgImageUrl) {
+            // Set a CSS custom property on the element
+            card.style.setProperty('--bg-image', `url('${bgImageUrl}')`);
+        }
+    });
+
     let activeCard = null;
     let currentImages = []; 
     let currentImgIndex = 0;
