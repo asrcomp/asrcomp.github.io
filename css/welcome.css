@@ -54,7 +54,100 @@ body::before {
 .hamburger-line { width: 25px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
 
 /* ===================================================== */
-/* TYPING TEXT */
+/* HERO BANNER */
+/* ===================================================== */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px 80px;
+    margin-bottom: 50px;
+}
+
+.hero-banner::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('../images/hero-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-content {
+    margin-bottom: 40px;
+}
+
+.hero-title {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.h2-computing {
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 900;
+    color: #FFB841;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    display: block;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    margin: 10px 0;
+    padding: 0;
+}
+
+.at-asrjc {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 800;
+    color: white;
+    font-style: italic;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    display: block;
+    line-height: 1.1;
+}
+
+.hero-code {
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    font-family: 'Courier New', Consolas, monospace;
+    color: #00D9FF;
+    font-weight: 600;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    margin: 20px 0 0 0;
+    letter-spacing: 1px;
+}
+
+.hero-tagline {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+}
+
+.hero-tagline p {
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    font-weight: 600;
+    font-style: italic;
+    color: #FFB841;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+}
+
+/* ===================================================== */
+/* TYPING TEXT (Legacy - kept for compatibility) */
 /* ===================================================== */
 .typing-container { font-size: 1.5rem; color: #ccc; margin-bottom: 0; text-align: center; }
 .typing-container h1 { color: white; margin-bottom: 5px; }
@@ -72,10 +165,11 @@ body::before {
 /* ===================================================== */
 .fade-up-element {
     opacity: 0;
-    transform: translate3d(0, 80px, 0); 
+    transform: translate3d(0, 80px, 0);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: transform, opacity;
 }
+
 .fade-up-element.in-view {
     opacity: 1 !important;
     transform: translate3d(0, 0, 0) !important;
@@ -313,8 +407,11 @@ body::before {
     .top-navbar { background-color: rgba(0,0,0,0); } /* Simplified since filter is removed from base */
     #main-content-wrapper { min-height: 100vh; padding-top: 40px; justify-content: flex-start; }
     .typing-container { margin-top: 80px; }
+    .hero-banner { min-height: 90vh; }
 }
 @media (max-width: 767px) {
     .desktop-nav-links { display: none; }
-    #main-content-wrapper { padding-top: 100px; padding-bottom: 50px; overflow-y: auto; }
+    #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; overflow-y: auto; }
+    .hero-banner { min-height: 80vh; padding: 40px 15px 60px; }
+    .hero-tagline { bottom: 20px; }
 }
