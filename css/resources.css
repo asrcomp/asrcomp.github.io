@@ -47,10 +47,34 @@ body::before {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.navbar-logo { 
-    font-size: 1.5rem; color: white; font-weight: bold; 
+.navbar-logo {
+    font-size: 1.5rem; color: white; font-weight: bold;
     text-decoration: none; cursor: pointer;
 }
+
+/* Home Icon Styles */
+.navbar-home-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.navbar-home-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-home-icon:hover {
+    color: #FFB841;
+    transform: scale(1.1);
+}
+
 .desktop-nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 1rem; }
 .nav-button { background: none; border: none; cursor: pointer; padding: 0; }
 .hamburger-line { width: 25px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
