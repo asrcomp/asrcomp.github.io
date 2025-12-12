@@ -48,7 +48,26 @@ body::before {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.navbar-logo { font-size: 1.5rem; color: white; font-weight: bold; }
+.navbar-logo {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo-img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo-img:hover {
+    transform: scale(1.1);
+}
+
 .desktop-nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 1rem; }
 .nav-button { background: none; border: none; cursor: pointer; padding: 0; }
 .hamburger-line { width: 25px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
@@ -73,11 +92,11 @@ body::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('../images/hero-banner.jpg');
+    background-image: url('../images/banner.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.5;
     z-index: -1;
 }
 
@@ -91,8 +110,9 @@ body::before {
 }
 
 .h2-computing {
+    font-family: 'Quantico', sans-serif;
     font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 900;
+    font-weight: 700;
     color: #FFB841;
     font-style: italic;
     text-transform: none;
@@ -108,8 +128,9 @@ body::before {
 }
 
 .at-asrjc {
+    font-family: 'Quantico', sans-serif;
     font-size: clamp(2.5rem, 8vw, 5.5rem);
-    font-weight: 800;
+    font-weight: 700;
     color: white;
     font-style: italic;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
@@ -133,17 +154,33 @@ body::before {
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 1000px;
+    max-width: 1200px;
+    background: linear-gradient(90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(20, 15, 5, 0.9) 5%,
+        rgba(40, 30, 10, 0.95) 15%,
+        rgba(60, 45, 15, 0.95) 50%,
+        rgba(40, 30, 10, 0.95) 85%,
+        rgba(20, 15, 5, 0.9) 95%,
+        rgba(0, 0, 0, 0) 100%);
+    padding: 20px 40px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
 }
 
 .hero-tagline p {
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: clamp(1.2rem, 3.5vw, 2rem);
     font-weight: 600;
-    font-style: italic;
-    color: #FFB841;
+    font-style: normal;
+    color: #FFD700;
     margin: 0;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 215, 0, 0.4);
+    letter-spacing: 1px;
 }
 
 /* ===================================================== */
@@ -413,5 +450,13 @@ body::before {
     .desktop-nav-links { display: none; }
     #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; overflow-y: auto; }
     .hero-banner { min-height: 80vh; padding: 40px 15px 60px; }
-    .hero-tagline { bottom: 20px; }
+    .hero-tagline {
+        bottom: 20px;
+        padding: 15px 25px;
+        width: 95%;
+    }
+    .hero-tagline p {
+        font-size: clamp(1rem, 3.5vw, 1.3rem);
+        letter-spacing: 0.5px;
+    }
 }
