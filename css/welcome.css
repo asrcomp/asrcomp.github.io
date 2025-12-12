@@ -110,8 +110,9 @@ body::before {
 }
 
 .h2-computing {
+    font-family: 'Quantico', sans-serif;
     font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 900;
+    font-weight: 700;
     color: #FFB841;
     font-style: italic;
     text-transform: none;
@@ -127,8 +128,9 @@ body::before {
 }
 
 .at-asrjc {
+    font-family: 'Quantico', sans-serif;
     font-size: clamp(2.5rem, 8vw, 5.5rem);
-    font-weight: 800;
+    font-weight: 700;
     color: white;
     font-style: italic;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
@@ -153,16 +155,28 @@ body::before {
     transform: translateX(-50%);
     width: 90%;
     max-width: 1000px;
+    background: linear-gradient(90deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(26, 26, 26, 0.95) 10%,
+        rgba(45, 35, 15, 0.95) 50%,
+        rgba(26, 26, 26, 0.95) 90%,
+        rgba(0, 0, 0, 0) 100%);
+    padding: 15px 30px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
 }
 
 .hero-tagline p {
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: clamp(1.2rem, 3.5vw, 2rem);
     font-weight: 600;
-    font-style: italic;
-    color: #FFB841;
+    font-style: normal;
+    color: #FFD700;
     margin: 0;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.3);
+    letter-spacing: 1px;
 }
 
 /* ===================================================== */
@@ -449,5 +463,12 @@ body::before {
     .desktop-nav-links { display: none; }
     #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; overflow-y: auto; }
     .hero-banner { min-height: 80vh; padding: 40px 15px 60px; }
-    .hero-tagline { bottom: 20px; }
+    .hero-tagline {
+        bottom: 20px;
+        padding: 12px 20px;
+        width: 95%;
+    }
+    .hero-tagline p {
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+    }
 }
