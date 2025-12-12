@@ -1,22 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* --- TYPEWRITER (Keep Existing) --- */
+    /* --- TYPEWRITER (Disabled - replaced with hero banner) --- */
     const typingElement = document.getElementById('typing-text');
-    const phrases = ['print("Hello world")', 'import sklearn', 'print("Welcome to ASR!")', 'import sqlite3'];
-    let phraseIndex = 0, charIndex = 0, isDeleting = false;
-    function type() {
-        const current = phrases[phraseIndex];
-        if (isDeleting) {
-            typingElement.textContent = current.substring(0, Math.max(0, charIndex - 1));
-            charIndex--;
-        } else {
-            typingElement.textContent = current.substring(0, Math.min(current.length, charIndex + 1));
-            charIndex++;
+    if (typingElement) {
+        const phrases = ['print("Hello world")', 'import sklearn', 'print("Welcome to ASR!")', 'import sqlite3'];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+        function type() {
+            const current = phrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = current.substring(0, Math.max(0, charIndex - 1));
+                charIndex--;
+            } else {
+                typingElement.textContent = current.substring(0, Math.min(current.length, charIndex + 1));
+                charIndex++;
+            }
+            if (!isDeleting && charIndex === current.length) { isDeleting = true; setTimeout(type, 1500); }
+            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
+            else { setTimeout(type, isDeleting ? 40 : 70); }
         }
-        if (!isDeleting && charIndex === current.length) { isDeleting = true; setTimeout(type, 1500); }
-        else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
-        else { setTimeout(type, isDeleting ? 40 : 70); }
+        type();
     }
-    type();
 
     /* --- MOBILE MENU (Keep Existing) --- */
     const mobileMenu = document.getElementById('mobileMenu');
@@ -39,13 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- SCROLL ARROW (Keep Existing) --- */
     const scrollArrow = document.getElementById('scrollArrow');
-    window.addEventListener('scroll', () => {
-        const scrollPos = window.scrollY;
-        const fadePoint = 200; 
-        let opacity = 1 - (scrollPos / fadePoint);
-        if (opacity < 0) opacity = 0; if (opacity > 1) opacity = 1;
-        scrollArrow.style.opacity = opacity;
-    });
+    if (scrollArrow) {
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const fadePoint = 200;
+            let opacity = 1 - (scrollPos / fadePoint);
+            if (opacity < 0) opacity = 0; if (opacity > 1) opacity = 1;
+            scrollArrow.style.opacity = opacity;
+        });
+    }
 
     /* ================================================= */
     /* MODAL WARP & CAROUSEL LOGIC                       */
