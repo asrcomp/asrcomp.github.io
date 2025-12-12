@@ -42,7 +42,7 @@ body::before {
 h1 { font-size: 3rem; color: white; text-align: center; margin-bottom: 10px; }
 h2 { font-size: 2.2rem; color: white; text-align: center; margin: 40px 0 20px 0; }
 h3 { font-size: 1.2em; color: #ddd; text-align: center; margin-bottom: 30px; }
-hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top: 2px solid rgba(255,255,255,0.3); }
+hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top: 3px solid #f89500; opacity: 0.8; }
 
 /* ===================================================== */
 /* NAVBAR */
@@ -290,3 +290,4 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     .slide-text-section { order: auto; }
     .teachers-grid { grid-template-columns: 1fr; }
 }
+
