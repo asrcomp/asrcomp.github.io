@@ -48,7 +48,26 @@ body::before {
     display: flex; justify-content: space-between; align-items: center;
 }
 
-.navbar-logo { font-size: 1.5rem; color: white; font-weight: bold; }
+.navbar-logo {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo-img {
+    height: 50px;
+    width: 50px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo-img:hover {
+    transform: scale(1.1);
+}
+
 .desktop-nav-links a { color: white; text-decoration: none; margin-left: 20px; font-size: 1rem; }
 .nav-button { background: none; border: none; cursor: pointer; padding: 0; }
 .hamburger-line { width: 25px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
