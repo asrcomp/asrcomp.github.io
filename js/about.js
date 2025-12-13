@@ -173,4 +173,20 @@ document.addEventListener('DOMContentLoaded', () => {
     new Carousel();
     new FadeUpObserver();
     new FAQAccordion();
+
+    // Logo scroll functionality
+    const logoImg = document.querySelector('.navbar-logo-img');
+
+    window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY;
+
+        // Handle logo shrinking and transparency
+        if (logoImg) {
+            if (scrollPos > 50) {
+                logoImg.classList.add('scrolled');
+            } else {
+                logoImg.classList.remove('scrolled');
+            }
+        }
+    });
 });

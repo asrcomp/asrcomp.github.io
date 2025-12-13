@@ -3,13 +3,20 @@
 /* ===================================================== */
 
 /* Base styles needed for navigation */
+html {
+    overflow-x: hidden;
+    height: auto;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    min-height: 100vh;
     position: relative;
-    padding-bottom: 100px;
+    background-color: #000000;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
+
 
 body::before {
     content: "";
@@ -25,6 +32,7 @@ body::before {
     z-index: -1;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    will-change: transform;
 }
 
 /* ===================================================== */
@@ -36,6 +44,7 @@ body::before {
     background: transparent;
     z-index: 100;
     display: flex; justify-content: space-between; align-items: center;
+    pointer-events: none;
 }
 
 .navbar-logo {
@@ -45,6 +54,7 @@ body::before {
     display: flex;
     align-items: center;
     padding: 15px 20px;
+    pointer-events: auto;
 }
 
 .navbar-logo-img {
@@ -52,7 +62,13 @@ body::before {
     width: 140px;
     object-fit: contain;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo-img.scrolled {
+    height: 42px;
+    width: 42px;
+    opacity: 0.5;
 }
 
 .navbar-logo-img:hover {
@@ -64,10 +80,10 @@ body::before {
     top: 0;
     right: 0;
     display: flex;
-    height: 100vh;
     align-items: flex-start;
     z-index: 101;
-    gap: -10px; /* Ensures perfect alignment between parallelograms */
+    gap: 0px; /* Removes gap between parallelograms */
+    pointer-events: auto;
 }
 
 .desktop-nav-links a {
@@ -75,9 +91,9 @@ body::before {
     position: relative;
     color: #FFFFFF;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: 400;
-    padding: 15px 30px 15px 25px;
+    padding: 10px 25px 10px 20px;
     background: linear-gradient(135deg, #008B8B 0%, #1E3A8A 50%, #0F172A 100%);
     clip-path: polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -88,6 +104,21 @@ body::before {
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
     margin: 0;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Black-teal styling for Home button on non-index pages */
+.desktop-nav-links a.home-button {
+    background: linear-gradient(135deg, #000000 0%, #008B8B 50%, #1E3A8A 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.desktop-nav-links a.home-button:hover {
+    background: linear-gradient(135deg, #1A1A1A 0%, #00A0A0 50%, #2C5282 100%);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(0, 139, 139, 0.3),
+                0 0 40px rgba(30, 58, 138, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Animated border glow effect */
@@ -151,7 +182,7 @@ body::before {
     transition: all 0.1s ease;
 }
 
-.nav-button { background: none; border: none; cursor: pointer; padding: 0; }
+.nav-button { background: none; border: none; cursor: pointer; padding: 0; pointer-events: auto; }
 .hamburger-line { width: 25px; height: 3px; background-color: #008B8B; margin: 5px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
 .hamburger-line:nth-child(1) { transform-origin: left center; }
 .hamburger-line:nth-child(2) { transform-origin: left center; }
@@ -303,5 +334,36 @@ body::before {
 
 @media (max-width: 767px) {
     .desktop-nav-links { display: none; }
-    #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; overflow-y: auto; }
+    #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; }
+
+    /* Mobile scroll performance optimizations */
+    * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    /* Enable text selection for content areas */
+    p, h1, h2, h3, h4, h5, h6, li, td, th {
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    /* Reduce blur effects on mobile for performance */
+    .mobile-menu {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: linear-gradient(135deg,
+            rgba(0, 139, 139, 0.98) 0%,
+            rgba(30, 58, 138, 0.98) 50%,
+            rgba(15, 23, 42, 0.98) 100%);
+    }
+
+    /* Hardware acceleration for smoother scrolling */
+    .fade-up-element {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000;
+    }
 }

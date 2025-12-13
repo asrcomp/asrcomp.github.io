@@ -4,7 +4,6 @@
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    min-height: 100vh;
     position: relative;
     padding-bottom: 100px;
 }
@@ -18,11 +17,8 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(8px);
-    transform: scale(1.05);
+    opacity: 0.8;
     z-index: -1;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
 #main-content-wrapper {
@@ -32,6 +28,7 @@ body::before {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    min-height: 100vh;
     padding: 100px 0 50px;
     box-sizing: border-box;
 }
@@ -42,14 +39,14 @@ body::before {
 .hero-banner {
     position: relative;
     width: 100%;
-    min-height: 85vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0;
-    margin-bottom: 50px;
+    margin: 0;
     overflow: hidden;
 }
 
@@ -126,40 +123,54 @@ body::before {
 .hero-tagline {
     position: relative;
     width: 90%;
-    max-width: 1200px;
-    margin: 50px auto;
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(20, 15, 5, 0.3) 10%,
-        rgba(40, 30, 10, 0.6) 20%,
-        rgba(60, 45, 15, 0.8) 50%,
-        rgba(40, 30, 10, 0.6) 80%,
-        rgba(20, 15, 5, 0.3) 90%,
-        rgba(0, 0, 0, 0) 100%);
-    padding: 30px 50px;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    max-width: 900px;
+    margin: 30px auto;
+    background: radial-gradient(ellipse at center,
+        rgba(192, 192, 192, 0.4) 0%,
+        rgba(192, 192, 192, 0.2) 30%,
+        rgba(192, 192, 192, 0.1) 60%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    padding: 30px 25px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15),
-                0 0 80px rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    box-sizing: border-box;
+    overflow: visible;
 }
 
-/* Simple slide-in animation for tagline */
-.hero-tagline.fade-up-element {
-    opacity: 0;
-    transform: translate3d(-100px, 0, 0);
-    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Silver radial outward effect */
+.hero-tagline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle,
+        rgba(192, 192, 192, 0.8) 0%,
+        rgba(192, 192, 192, 0.4) 30%,
+        rgba(192, 192, 192, 0.1) 60%,
+        transparent 100%
+    );
+    transform: translate(-50%, -50%);
+    animation: radialOutward 1.5s ease-out forwards;
+    z-index: -1;
 }
 
-.hero-tagline.fade-up-element.in-view {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+@keyframes radialOutward {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 300%;
+        height: 300%;
+        opacity: 0;
+    }
 }
 
 .hero-tagline p {
@@ -167,16 +178,76 @@ body::before {
     font-size: clamp(1.8rem, 4.5vw, 2.8rem);
     font-weight: 400;
     font-style: normal;
-    color: #FFD700;
+    color: transparent;
     margin: 0;
     text-align: center;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8),
-                 0 0 40px rgba(255, 215, 0, 0.5),
-                 0 0 60px rgba(255, 215, 0, 0.3);
-    letter-spacing: 2px;
+    line-height: 1.3;
+    letter-spacing: 1px;
     width: 100%;
     position: relative;
     z-index: 2;
+    background: linear-gradient(
+        90deg,
+        #FFB841 0%,
+        #FFD700 25%,
+        #FFED4E 50%,
+        #FFD700 75%,
+        #FFB841 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+}
+
+/* Gradient text animation effect */
+.hero-tagline .gold-char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-50px);
+    font-family: 'Kaushan Script', cursive;
+    background: linear-gradient(
+        90deg,
+        #FFB841 0%,
+        #FFD700 25%,
+        #FFED4E 50%,
+        #FFD700 75%,
+        #FFB841 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.8))
+            drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+    position: relative;
+    padding: 0 1px;
+    margin: 0;
+    overflow: visible;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform-style: preserve-3d;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+/* Text animation for scroll trigger - fade and slide from left */
+.hero-tagline.fade-up-element .gold-char {
+    animation: textFadeSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Text fade and slide in from left animation */
+@keyframes textFadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+        background-position: 0% 50%;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        background-position: 100% 50%;
+    }
+}
 }
 
 /* ===================================================== */
@@ -216,32 +287,46 @@ body::before {
 .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 .content-section {
-    width: 90%; max-width: 1000px;
-    margin-top: 50px;
-    display: flex; flex-direction: column; align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
 }
-.section-title { color: white; margin-bottom: 40px; text-align: center; }
+.section-title {
+    font-family: 'Quantico', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #FFB841;
+    margin-bottom: 40px;
+    text-align: center;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+    font-style: italic;
+}
 
 .highlights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
-    width: 100%; padding: 0 20px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .highlight-card {
     position: relative; /* Essential for the ::before element */
-    /* Removed: background-color: rgba(255, 255, 255, 0.1); */
-    /* Removed: backdrop-filter: blur(5px); */
-    /* Removed: -webkit-backdrop-filter: blur(5px); */
-    /* Removed: border: 1px solid rgba(255, 255, 255, 0.15); */
-    
+    background-color: rgba(0, 0, 0, 0.6); /* Darker overlay for text contrast */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
     border-radius: 12px;
     padding: 40px 20px;
     color: white;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    cursor: pointer; 
+    cursor: pointer;
     transition: transform 0.3s;
     overflow: hidden; /* To contain the pseudo-element */
 }
@@ -252,18 +337,16 @@ body::before {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 1; /* Behind the content */
-    opacity: 0.5; /* Reduce opacity for better readability */
-    transition: opacity 0.3s, transform 0.3s;
-    
+    opacity: 1; /* Fully opaque for better readability */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    will-change: transform, opacity;
+
     /* Set background properties based on the data attribute */
-    background-image: var(--bg-image); 
+    background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
-    
-    /* Apply the blur filter */
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    
+
+    /* No blur filter */
     pointer-events: none; /* Ignore clicks */
 }
 
@@ -271,32 +354,48 @@ body::before {
 .highlight-card h3, .highlight-card p {
     position: relative;
     z-index: 2; /* Over the ::before element */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9),
-                 0 0 20px rgba(0, 0, 0, 0.7),
-                 1px 1px 3px rgba(0, 0, 0, 1);
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 1),
+                 2px 2px 8px rgba(0, 0, 0, 1),
+                 1px 1px 4px rgba(0, 0, 0, 1);
     transition: all 0.3s ease;
 }
 
 .highlight-card h3 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 10px;
-    color: #FFD700;
+    margin-bottom: 15px;
+    color: #E0F2F1;
+    line-height: 1.3;
 }
 
 .highlight-card p {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #FFB841;
+    line-height: 1.5;
+    font-style: normal;
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 1),
+                 2px 2px 8px rgba(0, 0, 0, 1),
+                 1px 1px 4px rgba(0, 0, 0, 1);
+}
+
+/* Style specifically for "click for details" text */
+.highlight-card .click-details {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 300;
     color: #FFFFFF;
-    line-height: 1.4;
+    opacity: 0.8;
+    margin-top: 8px;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
 }
 
 /* Enhanced Hover effect - removes blur and enhances text */
 .highlight-card:hover::before {
-    opacity: 0.8; /* Slightly less transparent on hover */
-    transform: scale(1.05); /* Subtle zoom effect */
-    filter: blur(0px); /* Remove blur on hover */
-    -webkit-filter: blur(0px);
+    transform: scale(1.08); /* More prominent zoom effect */
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .highlight-card:hover h3 {
@@ -315,27 +414,105 @@ body::before {
     color: #FFFFFF;
 }
 
-/* Card transform animation */
+/* Card transform animation with diffuse white glow */
 .highlight-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4),
-                0 0 40px rgba(255, 215, 0, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
+                0 0 60px rgba(255, 215, 0, 0.4),
+                0 0 80px rgba(255, 255, 255, 0.6),
+                0 0 100px rgba(255, 255, 255, 0.4),
+                0 0 120px rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* NOI Cards - Dark gradient background instead of images */
-.highlight-card.noi-card::before {
-    background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #0a0a0a 100%) !important;
-    filter: none !important;
-    -webkit-filter: none !important;
-    opacity: 1 !important;
+/* Imageless Cards - Premium black card with dark silver gradient */
+.highlight-card.imageless-card {
+    background: linear-gradient(135deg,
+        #000000 0%,
+        #1a1a1a 15%,
+        #2d2d2d 30%,
+        #4a4a4a 45%,
+        #5a5a5a 60%,
+        #4a4a4a 75%,
+        #2d2d2d 90%,
+        #0a0a0a 100%);
+    border: 2px solid rgba(192, 192, 192, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7),
+                inset 0 2px 0 rgba(255, 255, 255, 0.15),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
 }
 
-.highlight-card.noi-card:hover::before {
-    background-image: linear-gradient(135deg, #2d2d2d 0%, #404040 50%, #1a1a1a 100%) !important;
-    filter: none !important;
-    -webkit-filter: none !important;
-    opacity: 1 !important;
+/* Enhanced texture overlay for premium metal feel */
+.highlight-card.imageless-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.08) 50%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, rgba(255, 255, 255, 0.06) 50%, transparent 55%),
+        linear-gradient(90deg, transparent 48%, rgba(192, 192, 192, 0.04) 50%, transparent 52%);
+    background-size: 6px 6px, 8px 8px, 12px 12px;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+}
+
+/* Elegant silver hover effect with diffuse white glow */
+.highlight-card.imageless-card:hover {
+    background: linear-gradient(135deg,
+        #2d2d2d 0%,
+        #4a4a4a 20%,
+        #6a6a6a 35%,
+        #808080 50%,
+        #969696 65%,
+        #808080 80%,
+        #6a6a6a 95%,
+        #4a4a4a 100%);
+    border: 2px solid rgba(192, 192, 192, 0.8);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8),
+                0 0 60px rgba(255, 255, 255, 0.6),
+                0 0 80px rgba(255, 255, 255, 0.4),
+                0 0 100px rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(192, 192, 192, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3),
+                inset 0 -2px 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Enhanced glow effect on hover */
+.highlight-card.imageless-card:hover::after {
+    background:
+        linear-gradient(45deg, transparent 48%, rgba(192, 192, 192, 0.1) 50%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, rgba(192, 192, 192, 0.1) 50%, transparent 52%);
+    background-size: 6px 6px;
+}
+
+/* Silver tint overlay on hover */
+.highlight-card.imageless-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent 0%, rgba(192, 192, 192, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.highlight-card.imageless-card:hover::before {
+    opacity: 1;
 }
 
 /* ===================================================== */
@@ -357,13 +534,13 @@ body::before {
 .modal-content {
     width: 90%;
     max-width: 500px;
-    
+
     /* Layout for Scrolling Text */
-    max-height: 80vh; 
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
-    
-    background-color: rgba(40, 40, 40, 0.85); 
+
+    background-color: rgba(40, 40, 40, 0.85);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -378,14 +555,14 @@ body::before {
 /* Image Wrapper - Fixed Height/Cover Mode */
 .modal-image-wrapper {
     width: 100%;
-    height: 200px; 
+    height: 300px;
     background-color: #333;
     border-radius: 8px;
     margin-bottom: 20px;
     overflow: hidden;
     display: flex; justify-content: center; align-items: center;
     position: relative;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 .modal-image-wrapper img {
     width: 100%; height: 100%; 
@@ -413,7 +590,61 @@ body::before {
     margin-bottom: 10px;
 }
 .modal-content h3 { margin: 0; font-size: 1.8rem; flex-grow: 1; }
-.modal-content p, .modal-content div { line-height: 1.5; color: #ddd; }
+.modal-content p, .modal-content div {
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 16px;
+}
+
+/* Better paragraph formatting for modal descriptions */
+#modalDesc {
+    text-align: left;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+#modalDesc p {
+    margin-bottom: 16px;
+    text-indent: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#modalDesc p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+#modalDesc br {
+    display: block;
+    margin: 12px 0;
+    content: "";
+}
+
+/* Achievement names in descriptions - bold and gold */
+#modalDesc b,
+#modalDesc strong {
+    color: #FFB841;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Style for team names and specific achievement mentions */
+#modalDesc .team-name {
+    color: #FFD700;
+    font-weight: 700;
+    font-size: 1.1em;
+    display: block;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Achievement highlights */
+#modalDesc .achievement-highlight {
+    color: #FFB841;
+    font-weight: 600;
+    font-style: italic;
+}
 
 /* External Link Button */
 .external-link-btn {
@@ -481,19 +712,20 @@ body::before {
     .nav-button { display: none; }
     .desktop-nav-links { display: flex; }
     .mobile-menu { display: none !important; }
-        #main-content-wrapper { min-height: 100vh; padding-top: 0; justify-content: flex-start; }
+        #main-content-wrapper { padding-top: 0; justify-content: flex-start; }
     .typing-container { margin-top: 80px; }
     .hero-banner { min-height: 90vh; }
 }
 @media (max-width: 767px) {
     .desktop-nav-links { display: none; }
-    #main-content-wrapper { padding-top: 0; padding-bottom: 50px; overflow-y: auto; }
+    #main-content-wrapper { padding-top: 0; padding-bottom: 50px; }
     .hero-banner { min-height: 80vh; padding: 0; }
     .hero-tagline {
-        margin: 40px auto;
-        padding: 25px 30px;
+        margin: 30px auto;
+        padding: 25px 20px;
         width: 95%;
         max-width: none;
+        overflow: visible;
     }
     .hero-tagline p {
         font-size: clamp(1rem, 3.5vw, 1.3rem);
@@ -504,5 +736,15 @@ body::before {
         max-width: none;
         padding: 20px 15px;
         margin: 15px 0 40px 0;
+    }
+    .highlights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 0 15px;
+    }
+    .modal-content {
+        max-height: 90vh;
+        width: 95%;
+        padding: 15px;
     }
 }

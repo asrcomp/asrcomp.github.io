@@ -1,4 +1,85 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* --- GOLD PLATED TAGLINE ANIMATION --- */
+    const taglineContainer = document.getElementById('taglineContainer');
+    const taglineText = document.getElementById('taglineText');
+
+    if (taglineText) {
+        const taglineContent = "Developing Future-Ready<br>Computing Professionals";
+
+        // Function to create character spans
+        function createCharacterSpans(text) {
+            const chars = [];
+            let currentWord = '';
+            let inTag = false;
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+
+                if (char === '<') {
+                    inTag = true;
+                    if (currentWord) {
+                        chars.push({type: 'text', content: currentWord});
+                        currentWord = '';
+                    }
+                    chars.push({type: 'tag', content: char});
+                } else if (char === '>') {
+                    inTag = false;
+                    chars.push({type: 'tag', content: char});
+                } else if (inTag) {
+                    chars.push({type: 'tag', content: char});
+                } else if (char === ' ') {
+                    chars.push({type: 'text', content: currentWord});
+                    currentWord = '';
+                    chars.push({type: 'space', content: ' '});
+                } else {
+                    currentWord += char;
+                }
+            }
+
+            if (currentWord) {
+                chars.push({type: 'text', content: currentWord});
+            }
+
+            return chars;
+        }
+
+        // Build HTML with character spans but don't animate yet
+        const characters = createCharacterSpans(taglineContent);
+        let html = '';
+        let charIndex = 0;
+
+        characters.forEach(item => {
+            if (item.type === 'tag') {
+                html += item.content;
+            } else if (item.type === 'space') {
+                html += item.content;
+            } else if (item.type === 'text') {
+                for (let i = 0; i < item.content.length; i++) {
+                    html += `<span class="gold-char">${item.content[i]}</span>`;
+                    charIndex++;
+                }
+            }
+        });
+
+        taglineText.innerHTML = html;
+
+    /* --- WRAP CLICK FOR DETAILS TEXT --- */
+    const highlightCards = document.querySelectorAll('.highlight-card');
+    highlightCards.forEach(card => {
+        const p = card.querySelector('p');
+        if (p) {
+            const text = p.innerHTML;
+            if (text.includes('<br>click for details')) {
+                const parts = text.split('<br>click for details');
+                p.innerHTML = parts[0] + '<br><span class="click-details">click for details</span>';
+            } else if (text.includes('click for details')) {
+                const parts = text.split('click for details');
+                p.innerHTML = parts[0] + '<span class="click-details">click for details</span>' + parts[1];
+            }
+        }
+    });
+    }
+
     /* --- TYPEWRITER (Disabled - replaced with hero banner) --- */
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
@@ -27,29 +108,85 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     };
 
-    /* --- FADE-UP OBSERVER (Keep Existing) --- */
+    /* --- SCROLL ARROW CLICK FUNCTIONALITY --- */
+    const scrollArrowClick = document.getElementById('scrollArrow');
+    if (scrollArrowClick) {
+        scrollArrowClick.addEventListener('click', () => {
+            const videoContainer = document.querySelector('.video-container');
+            if (videoContainer) {
+                videoContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
+    /* --- FADE-UP OBSERVER (Fixed to prevent flickering) --- */
     const fadeUpElements = document.querySelectorAll('.fade-up-element');
-    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+        trackVisibility: false
+    };
     const observerCallback = (entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
-            else entry.target.classList.remove('in-view');
+            if (entry.isIntersecting && !entry.target.classList.contains('in-view')) {
+                entry.target.classList.add('in-view');
+
+                // Trigger tagline character animation specifically
+                if (entry.target.id === 'taglineContainer') {
+                    const goldChars = entry.target.querySelectorAll('.gold-char');
+                    goldChars.forEach((char, index) => {
+                        setTimeout(() => {
+                            char.style.animationDelay = `${index * 0.08}s`;
+                            char.style.animation = 'textFadeSlideIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                        }, index * 80); // 80ms delay between each character
+                    });
+                }
+            }
+            // Removed the else clause that was removing the 'in-view' class
+            // This prevents the animation from repeating and causing flicker
         });
     };
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     fadeUpElements.forEach(el => observer.observe(el));
 
-    /* --- SCROLL ARROW (Keep Existing) --- */
+    /* --- SCROLL ARROW (Optimized with throttling) --- */
     const scrollArrow = document.getElementById('scrollArrow');
-    if (scrollArrow) {
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
+    const logoImg = document.querySelector('.navbar-logo-img');
+    let ticking = false;
+
+    function updateScrollEffects() {
+        const scrollPos = window.scrollY;
+
+        // Handle scroll arrow fade
+        if (scrollArrow) {
             const fadePoint = 200;
             let opacity = 1 - (scrollPos / fadePoint);
             if (opacity < 0) opacity = 0; if (opacity > 1) opacity = 1;
             scrollArrow.style.opacity = opacity;
-        });
+        }
+
+        // Handle logo shrinking and transparency
+        if (logoImg) {
+            if (scrollPos > 50) {
+                logoImg.classList.add('scrolled');
+            } else {
+                logoImg.classList.remove('scrolled');
+            }
+        }
+
+        ticking = false;
     }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
+    });
 
     /* Tagline now uses the standard fade-up observer - no custom animation needed */
 
@@ -59,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('detailsModal');
     const modalContent = document.querySelector('.modal-content');
     const modalCloseBtn = document.querySelector('.modal-close-btn');
-    const highlightCards = document.querySelectorAll('.highlight-card');
+    const cardsForModal = document.querySelectorAll('.highlight-card');
 
     const modalTitle = document.getElementById('modalTitle');
     const modalDesc = document.getElementById('modalDesc');
@@ -74,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ================================================= */
     /* NEW: BACKGROUND IMAGE SETUP - INSERTED HERE       */
     /* ================================================= */
-    highlightCards.forEach(card => {
+    cardsForModal.forEach(card => {
         const bgImageUrl = card.dataset.bgImage;
         if (bgImageUrl) {
             // Set a CSS custom property on the element
@@ -83,8 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let activeCard = null;
-    let currentImages = []; 
+    let currentImages = [];
     let currentImgIndex = 0;
+    let autoAdvanceInterval = null;
 
     // Helper to update image display
     const updateGallery = () => {
@@ -108,15 +246,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Auto-advance carousel functionality
+    const startAutoAdvance = () => {
+        stopAutoAdvance(); // Clear any existing interval
+        if (currentImages.length > 1) {
+            autoAdvanceInterval = setInterval(() => {
+                currentImgIndex = (currentImgIndex + 1) % currentImages.length;
+                updateGallery();
+            }, 2500); // 2.5 seconds
+        }
+    };
+
+    const stopAutoAdvance = () => {
+        if (autoAdvanceInterval) {
+            clearInterval(autoAdvanceInterval);
+            autoAdvanceInterval = null;
+        }
+    };
+
     // Card Click Listeners
-    highlightCards.forEach(card => {
+    cardsForModal.forEach(card => {
         card.addEventListener('click', () => {
             activeCard = card;
-            
+
             // 1. Populate Text
             modalTitle.textContent = card.dataset.title;
             modalDesc.innerHTML = card.dataset.desc;
-            
+
             // 2. Handle Link Button (NEW)
             const linkUrl = card.dataset.link;
             if (linkUrl) {
@@ -127,19 +283,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 3. Populate Images
-            const rawImages = card.dataset.images || ''; 
+            const rawImages = card.dataset.images || '';
             currentImages = rawImages.split(',').map(s => s.trim()).filter(s => s.length > 0);
-            
+
             currentImgIndex = 0;
             updateGallery();
+            startAutoAdvance(); // Start auto-advance when modal opens
 
             // 4. Prepare for Animation
             modalOverlay.classList.add('active');
-            
+
             // RESET Styles
-            modalContent.style.transition = 'none'; 
-            modalContent.style.transform = ''; 
-            modalContent.style.opacity = '1'; 
+            modalContent.style.transition = 'none';
+            modalContent.style.transform = '';
+            modalContent.style.opacity = '1';
 
             // 5. Measure
             const cardRect = card.getBoundingClientRect();
@@ -153,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 7. Apply & Animate
             modalContent.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`;
-            
+
             requestAnimationFrame(() => {
                 modalContent.style.transition = 'transform 0.4s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.4s ease';
                 modalContent.style.transform = 'translate(0, 0) scale(1, 1)';
@@ -167,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentImages.length > 1) {
             currentImgIndex = (currentImgIndex + 1) % currentImages.length;
             updateGallery();
+            startAutoAdvance(); // Restart auto-advance after manual navigation
         }
     });
 
@@ -175,11 +333,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentImages.length > 1) {
             currentImgIndex = (currentImgIndex - 1 + currentImages.length) % currentImages.length;
             updateGallery();
+            startAutoAdvance(); // Restart auto-advance after manual navigation
         }
     });
 
     // Close Function (Keep Existing)
     const closeModal = () => {
+        stopAutoAdvance(); // Stop auto-advance when modal closes
+
         if (!activeCard) {
             modalOverlay.classList.remove('active');
             return;
