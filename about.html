@@ -16,22 +16,6 @@
         body::before {
             background-image: url('images/background.gif');
         }
-
-        #main-content-wrapper {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            padding: 20px;
-        }
-
-        @media (max-width: 768px) {
-            #main-content-wrapper {
-                padding: 20px;
-            }
-        }
     </style>
 </head>
 
@@ -63,8 +47,8 @@
     </div>
 
     <div id="main-content-wrapper">
-        <h1>About H2 Computing</h1>
-        <h3>Learn more about our syllabus and the dedicated team behind the programme</h3>
+        <h1 class="page-title">About H2 Computing</h1>
+        <p class="page-subtitle">Learn more about our syllabus and the dedicated team behind the programme</p>
 
         <h2>Syllabus</h2>
 
@@ -72,86 +56,110 @@
 
         <div class="carousel-container fade-up-element">
             <div class="carousel-track-container">
-                <!-- Slide 1 -->
+                <!-- Slide 1: Programming Fundamentals -->
                 <div class="carousel-slide current-slide">
                     <div class="slide-content-wrapper">
                         <div class="slide-image-section">
-                            <img src="images/python logo.png" alt="Slide 1">
+                            <img src="images/python logo.png" alt="Programming Fundamentals">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Programming Concepts</h2>
+                            <h2>Programming Fundamentals</h2>
                             <ul class="bullet-list">
                                 <li>Python programming</li>
-                                <li>Functions, modules, debugging</li>
-                                <li>Object-oriented programming</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 -->
-                <div class="carousel-slide">
-                    <div class="slide-content-wrapper">
-                        <div class="slide-image-section">
-                            <img src="images/digital tree.png" alt="Slide 2">
-                        </div>
-                        <div class="slide-text-section">
-                            <h2>Data Structures & Algorithms</h2>
-                            <ul class="bullet-list">
-                                <li>Stacks, queues, linked lists</li>
-                                <li>Trees, hash tables</li>
-                                <li>Searching & sorting algorithms</li>
+                                <li>Recursion</li>
+                                <li>Object-Oriented Programming</li>
+                                <li>Data validation and testing</li>
+                                <li>Professional coding standards</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slide 3 -->
+                <!-- Slide 2: Data Structures and Algorithms -->
                 <div class="carousel-slide">
                     <div class="slide-content-wrapper">
                         <div class="slide-image-section">
-                            <img src="images/html logo.png" alt="Slide 3">
+                            <img src="images/digital tree.png" alt="Data Structures and Algorithms">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Basic Web Development</h2>
+                            <h2>Data Structures and Algorithms</h2>
                             <ul class="bullet-list">
-                                <li>Web application architecture</li>
-                                <li>HTML/CSS basics</li>
-                                <li>Flask framework</li>
+                                <li>Stacks and queues</li>
+                                <li>Arrays and linked lists</li>
+                                <li>Binary trees</li>
+                                <li>Hash tables</li>
+                                <li>Searching and Sorting Algorithms</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slide 4 -->
+                <!-- Slide 3: Data and Information -->
                 <div class="carousel-slide">
                     <div class="slide-content-wrapper">
                         <div class="slide-image-section">
-                            <img src="images/networks.png" alt="Slide 4">
+                            <img src="images/sqlite3 logo.png" alt="Data and Information">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Networking & Security</h2>
+                            <h2>Data and Information</h2>
                             <ul class="bullet-list">
-                                <li>Network protocols & architecture</li>
-                                <li>Threats, encryption & authentication</li>
-                                <li>IP & MAC addressing, routing</li>
+                                <li>Database design</li>
+                                <li>Using SQL</li>
+                                <li>Data representation and encoding</li>
+                                <li>Privacy and protection</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Slide 5 -->
+                <!-- Slide 4: Computer Networks and Web Apps -->
                 <div class="carousel-slide">
                     <div class="slide-content-wrapper">
                         <div class="slide-image-section">
-                            <img src="images/sqlite3 logo.png" alt="Slide 5">
+                            <img src="images/html logo.png" alt="Computer Networks and Web Apps">
                         </div>
                         <div class="slide-text-section">
-                            <h2>Databases & SQL</h2>
+                            <h2>Computer Networks and Web Apps</h2>
                             <ul class="bullet-list">
-                                <li>Database design & normalization</li>
-                                <li>SQL queries & optimization</li>
-                                <li>NoSQL basics</li>
+                                <li>Network fundamentals</li>
+                                <li>Protocols and packet switching</li>
+                                <li>Network security and protection</li>
+                                <li>Web app with HTML, CSS and Flask</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: Social Ethical and Security Impact -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="images/cybersecurity.png" alt="Social Ethical and Security Impact">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Social Ethical and Security Impact</h2>
+                            <ul class="bullet-list">
+                                <li>Ethics and legal issues</li>
+                                <li>Social and economic impact of tech</li>
+                                <li>Cybersecurity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: Emerging Technologies -->
+                <div class="carousel-slide">
+                    <div class="slide-content-wrapper">
+                        <div class="slide-image-section">
+                            <img src="images/emerging_tech.png" alt="Emerging Technologies">
+                        </div>
+                        <div class="slide-text-section">
+                            <h2>Emerging Technologies</h2>
+                            <ul class="bullet-list">
+                                <li>AI and Machine Learning</li>
+                                <li>K-nearest neighbours and K-means</li>
+                                <li>Cross validation</li>
+                                <li>Other latest tech innovations</li>
                             </ul>
                         </div>
                     </div>
@@ -164,6 +172,7 @@
                 <button class="nav-dot" data-slide-index="2"></button>
                 <button class="nav-dot" data-slide-index="3"></button>
                 <button class="nav-dot" data-slide-index="4"></button>
+                <button class="nav-dot" data-slide-index="5"></button>
             </div>
 
             <button class="carousel-button prev" id="prevButton">&#10094;</button>
@@ -211,13 +220,21 @@
                     <li>Postgraduate Diploma in Education (JC Track), Distinction</li>
                     <li>Taught the 2024–25 batch. Will be taking 2026 JC1 batch</li>
                 </ul>
+                <div class="teacher-social-links">
+                    <a href="https://www.linkedin.com/in/lam-meng-hwee-208299286/" target="_blank" class="linkedin-btn" title="Connect on LinkedIn">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill="#0077B5"/>
+                        </svg>
+                        LinkedIn Profile
+                    </a>
+                </div>
             </div>
 
             <div class="teacher-card">
                 <div class="teacher-image">
                     <img src="images/mrsteckwani.png" alt="Teacher 2">
                 </div>
-                <h3>Mrs. Sundraes Teckwani</h3>
+                <h3>Mrs Sundraes Teckwani</h3>
                 <p class="teacher-role">Teaching H2 Computing and H1 Mathematics in ASRJC</p>
                 <ul class="teacher-bio">
                     <li>Bachelor's degree in Mathematics and Computational Science (National University of Singapore)</li>
@@ -294,6 +311,8 @@
                 </button>
                 <div class="faq-answer">
                     <p>Yes, there is an assessment that you would have to take if you're keen to take the subject. This is designed to assess your computational thinking skills. Importantly, no prior knowledge of any programming languages is required, so you can focus on demonstrating your problem-solving abilities and logical reasoning. Many students would find the assessment rather manageable. So if you're keen to take the subject, do ensure that you take this assessment after your matriculation to ASRJC 😀 . More information will be provided during the H2 Computing subject talk on the first day of matriculation.</p>
+                    <br><br>
+              <p><strong>For JC1 repeat students:</strong> For any JC1 repeat students who intend to take H2 Computing, including those retaking the subject again in JC1, you must take and clear the selection test to be enrolled in the subject.</p>
                 </div>
             </div>
 
@@ -303,7 +322,18 @@
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>H2 Computing is a highly hands-on subject, where there will be frequent coding sessions in the classroom. In order for you to be familiar with the exam programming environment, we do strongly recommend that you have a Windows laptop for every computing lesson. There will be more information given to you in JC1 to purchase a laptop via the college if you do require one.</p>
+                    <p>H2 Computing is a highly hands-on subject, where there will be frequent coding sessions in the classroom. Windows laptop is strongly encouraged. iPads and Chromebooks cannot be used for several of classroom practical activities. In order for you to be familiar with the exam programming environment, we do strongly recommend that you have a Windows laptop for every computing lesson. There will be more information given to you in JC1 to purchase a laptop via the college if you do require one.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>I'm interested to take part in the National Olympiad in Informatics (NOI) this year. Would I be able to do so?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We will arrange for a selection to see if you are able to cope well with the rigour. It would likely be on the day of matriculation, due to the tight registration deadline for the olympiad, so you are advised to prepare well from now till the day you are posted to ASR.</p>
+                    <p>A practice platform you can utilise is <a href="https://codebreaker.xyz/group/noi" target="_blank" style="color: #4fb3d9;">Codebreaker</a>.</p>
                 </div>
             </div>
         </div>

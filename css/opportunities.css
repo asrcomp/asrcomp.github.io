@@ -27,25 +27,70 @@ body {
 }
 
 h1 {
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
     font-size: 3rem;
-    color: white;
+    color: #FFD700;
     text-align: center;
     margin-bottom: 10px;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        4px 4px 8px rgba(128, 128, 128, 0.6),
+        6px 6px 12px rgba(128, 128, 128, 0.4);
+    letter-spacing: 1px;
 }
 
 h2 {
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
     font-size: 2.2rem;
-    color: white;
+    color: #FFD700;
     text-align: center;
     margin: 40px 0 20px 0;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        4px 4px 8px rgba(128, 128, 128, 0.6),
+        6px 6px 12px rgba(128, 128, 128, 0.4);
+    letter-spacing: 1px;
 }
 
 h3 {
-    font-size: 1.2em;
-    color: #ddd;
-    text-align: center;
-    margin-bottom: 30px;
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #FFD700;
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        2px 2px 4px rgba(128, 128, 128, 0.6);
+    letter-spacing: 0.5px;
 }
+
+/* Page Title Styles */
+.page-title {
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    font-size: 3.5em;
+    color: #FF8C00;
+    text-shadow:
+        2px 2px 4px rgba(0, 0, 0, 0.8),
+        4px 4px 8px rgba(0, 0, 0, 0.6);
+    margin: 0 0 0.5em 0;
+    letter-spacing: 1px;
+    float: left;
+    line-height: 1.1;
+}
+
+.page-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 2em 0;
+    float: left;
+    clear: right;
+    max-width: 70%;
+    line-height: 1.5;
+}
+
 
 hr {
     width: 90%;

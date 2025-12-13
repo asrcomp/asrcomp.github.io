@@ -171,11 +171,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle logo shrinking and transparency
         if (logoImg) {
-            if (scrollPos > 50) {
-                logoImg.classList.add('scrolled');
+            const startShrinking = 50;
+            const endShrinking = 250;
+            const startSize = 140;
+            const endSize = 70;
+
+            let scale;
+            if (scrollPos <= startShrinking) {
+                scale = 1;
+                logoImg.classList.remove('shrinking');
+            } else if (scrollPos >= endShrinking) {
+                logoImg.classList.add('shrinking');
+                scale = endSize / startSize; // Minimum size - no smaller than this
             } else {
-                logoImg.classList.remove('scrolled');
+                logoImg.classList.add('shrinking');
+                // Smooth, linear shrinking - never expanding
+                const progress = (scrollPos - startShrinking) / (endShrinking - startShrinking);
+                scale = 1 - (progress * (1 - endSize / startSize));
             }
+
+            logoImg.style.transform = `scale(${scale})`;
         }
 
         ticking = false;

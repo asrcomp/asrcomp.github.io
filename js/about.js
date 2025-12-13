@@ -68,6 +68,7 @@ window.addEventListener('load', () => {
     window.toggleMobileMenu = function() {
         mobileMenu.classList.toggle('open');
         document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        document.documentElement.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
     };
 
 /* CLASS CAROUSEL */
@@ -82,6 +83,16 @@ class Carousel {
 
         if (!this.track || this.slides.length === 0) return;
 
+        // Auto-advance variables
+        this.autoAdvanceInterval = null;
+        this.autoAdvanceDelay = 4000; // 4 seconds
+        this.isPaused = false;
+
+        // Touch/swipe variables
+        this.startX = 0;
+        this.endX = 0;
+        this.isDragging = false;
+
         this.init();
     }
 
@@ -91,6 +102,86 @@ class Carousel {
         this.nextBtn?.addEventListener('click', () => this.next());
         this.dots.forEach((dot, i) => dot.addEventListener('click', () => this.goTo(i)));
         window.addEventListener('resize', () => this.updateSlide());
+
+        // Auto-advance - TEMPORARILY DISABLED
+        // this.startAutoAdvance();
+
+        // Touch/swipe events
+        this.initTouchEvents();
+
+        // Pause auto-advance on hover
+        // this.track.addEventListener('mouseenter', () => this.pauseAutoAdvance());
+        // this.track.addEventListener('mouseleave', () => this.resumeAutoAdvance());
+    }
+
+    initTouchEvents() {
+        // Mouse events
+        this.track.addEventListener('mousedown', (e) => this.handleStart(e.clientX));
+        this.track.addEventListener('mousemove', (e) => this.handleMove(e.clientX));
+        this.track.addEventListener('mouseup', (e) => this.handleEnd(e.clientX));
+        this.track.addEventListener('mouseleave', (e) => this.handleEnd(e.clientX));
+
+        // Touch events
+        this.track.addEventListener('touchstart', (e) => this.handleStart(e.touches[0].clientX));
+        this.track.addEventListener('touchmove', (e) => this.handleMove(e.touches[0].clientX));
+        this.track.addEventListener('touchend', (e) => this.handleEnd(e.changedTouches[0].clientX));
+    }
+
+    handleStart(x) {
+        this.startX = x;
+        this.isDragging = true;
+        this.pauseAutoAdvance();
+        this.track.style.cursor = 'grabbing';
+    }
+
+    handleMove(x) {
+        if (!this.isDragging) return;
+        this.endX = x;
+    }
+
+    handleEnd(x) {
+        if (!this.isDragging) return;
+
+        this.endX = x;
+        this.isDragging = false;
+        this.track.style.cursor = 'grab';
+
+        const diff = this.startX - this.endX;
+        const threshold = 50; // Minimum swipe distance
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0) {
+                this.next(); // Swipe left - go to next slide
+            } else {
+                this.prev(); // Swipe right - go to previous slide
+            }
+        }
+
+        this.resumeAutoAdvance();
+    }
+
+    startAutoAdvance() {
+        this.stopAutoAdvance();
+        this.autoAdvanceInterval = setInterval(() => {
+            if (!this.isPaused) {
+                this.next();
+            }
+        }, this.autoAdvanceDelay);
+    }
+
+    stopAutoAdvance() {
+        if (this.autoAdvanceInterval) {
+            clearInterval(this.autoAdvanceInterval);
+            this.autoAdvanceInterval = null;
+        }
+    }
+
+    pauseAutoAdvance() {
+        this.isPaused = true;
+    }
+
+    resumeAutoAdvance() {
+        this.isPaused = false;
     }
 
     updateSlide() {
