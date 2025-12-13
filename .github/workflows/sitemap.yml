@@ -1,5 +1,7 @@
 name: Generate sitemap
 on: [push]
+permissions:
+  contents: write
 jobs:
   sitemap:
     runs-on: ubuntu-latest
