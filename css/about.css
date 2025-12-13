@@ -85,9 +85,6 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
     transform: scale(1.1);
 }
 
-.desktop-nav-links { display: flex; }
-.desktop-nav-links a { color: white; text-decoration: none; margin-left: 20px; transition: color 0.3s; }
-.desktop-nav-links a:hover { color: #4fb3d9; }
 .nav-button { background: none; border: none; cursor: pointer; display: none; }
 .hamburger-line { width: 25px; height: 3px; background: white; margin: 5px 0; }
 

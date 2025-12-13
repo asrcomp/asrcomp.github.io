@@ -1,0 +1,307 @@
+/* ===================================================== */
+/* NAVIGATION STYLES - Used across all pages
+/* ===================================================== */
+
+/* Base styles needed for navigation */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../images/background.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(8px);
+    transform: scale(1.05);
+    z-index: -1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* ===================================================== */
+/* NAVBAR - Tech Style with Teal-Navy Gradient */
+/* ===================================================== */
+.top-navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    padding: 0;
+    background: transparent;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.navbar-logo-img {
+    height: 140px;
+    width: 140px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.navbar-logo-img:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+.desktop-nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 100vh;
+    align-items: flex-start;
+    z-index: 101;
+    gap: -10px; /* Ensures perfect alignment between parallelograms */
+}
+
+.desktop-nav-links a {
+    font-family: 'Kaushan Script', cursive;
+    position: relative;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 15px 30px 15px 25px;
+    background: linear-gradient(135deg, #008B8B 0%, #1E3A8A 50%, #0F172A 100%);
+    clip-path: polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.3px;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 139, 139, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animated border glow effect */
+.desktop-nav-links a::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    border-radius: 10px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    animation: borderGlow 3s linear infinite;
+}
+
+.desktop-nav-links a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Hover effects with tech-style animations */
+.desktop-nav-links a:hover {
+    transform: translateX(6px) translateY(-2px);
+    color: #E0F2F1;
+    box-shadow: 0 8px 25px rgba(0, 139, 139, 0.4),
+                0 0 20px rgba(0, 169, 169, 0.3),
+                0 0 40px rgba(30, 58, 138, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #00A0A0 0%, #2C5282 50%, #1A365D 100%);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5),
+                 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.desktop-nav-links a:hover::before {
+    opacity: 1;
+    animation: borderGlow 1s linear infinite;
+}
+
+.desktop-nav-links a:hover::after {
+    left: 100%;
+}
+
+/* Active state styling */
+.desktop-nav-links a:active {
+    transform: scale(1.05) translateY(-1px);
+    transition: all 0.1s ease;
+}
+
+.nav-button { background: none; border: none; cursor: pointer; padding: 0; }
+.hamburger-line { width: 25px; height: 3px; background-color: #008B8B; margin: 5px 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.hamburger-line:nth-child(1) { transform-origin: left center; }
+.hamburger-line:nth-child(2) { transform-origin: left center; }
+
+/* ===================================================== */
+/* MOBILE MENU */
+/* ===================================================== */
+.mobile-menu {
+    position: fixed; top: 0; right: 0;
+    width: 85%; max-width: 400px; height: 100vh;
+    background: linear-gradient(135deg,
+        rgba(0, 139, 139, 0.95) 0%,
+        rgba(30, 58, 138, 0.95) 50%,
+        rgba(15, 23, 42, 0.95) 100%);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3),
+                inset 0 0 60px rgba(255, 255, 255, 0.05);
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 110;
+    padding: 80px 30px 40px;
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 70%);
+    pointer-events: none;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu ul li {
+    margin-bottom: -2px;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.open ul li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.mobile-menu.open ul li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.open ul li:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu.open ul li:nth-child(3) { transition-delay: 0.3s; }
+
+.mobile-menu ul li a {
+    font-family: 'Kaushan Script', cursive;
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-decoration: none;
+    display: block;
+    padding: 20px 40px 20px 30px;
+    background: linear-gradient(135deg,
+        rgba(0, 139, 139, 0.8) 0%,
+        rgba(30, 58, 138, 0.6) 50%,
+        rgba(15, 23, 42, 0.8) 100%);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(15px 0%, 100% 0%, calc(100% - 15px) 100%, 0% 100%);
+    border-right: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-menu ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.mobile-menu ul li a:hover {
+    background: linear-gradient(135deg,
+        rgba(0, 169, 169, 0.9) 0%,
+        rgba(44, 82, 130, 0.7) 50%,
+        rgba(26, 54, 93, 0.9) 100%);
+    transform: translateX(8px) translateY(-2px);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4),
+                 0 0 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 139, 139, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu ul li a:hover::before {
+    left: 100%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+    color: #E0F2F1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+                0 0 25px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4),
+                 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* ===================================================== */
+/* MEDIA QUERIES */
+/* ===================================================== */
+@media (min-width: 768px) {
+    .nav-button { display: none; }
+    .desktop-nav-links { display: flex; }
+    .mobile-menu { display: none !important; }
+}
+
+@media (max-width: 767px) {
+    .desktop-nav-links { display: none; }
+    #main-content-wrapper { padding-top: 80px; padding-bottom: 50px; overflow-y: auto; }
+}

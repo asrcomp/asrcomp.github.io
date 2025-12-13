@@ -8,8 +8,8 @@
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Quantico:wght@400;700&family=Pixelify+Sans:wght@400;500;600;700&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/opportunities.css">
     
     <style>
@@ -21,19 +21,15 @@
 
 <body>
     <nav class="top-navbar">
-        <a href="/index.html" class="navbar-home-icon" title="Home">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-            </svg>
-        </a>
-
-        <div class="desktop-nav-links">
-            <a href="/index.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/opportunities.html">Opportunities</a>
-            <a href="/resources.html">Learning Resources</a>
+        <div class="navbar-logo">
+            <img src="favicon.png" alt="ASR Computing" class="navbar-logo-img">
         </div>
-
+        <div class="desktop-nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="opportunities.html">Opportunities</a>
+            <a href="resources.html">Learning Resources</a>
+        </div>
         <button class="nav-button" onclick="toggleMobileMenu()">
             <div class="hamburger-line"></div>
             <div class="hamburger-line"></div>
@@ -43,10 +39,10 @@
     <div class="mobile-menu" id="mobileMenu">
         <span class="close-btn" onclick="toggleMobileMenu()">×</span>
         <ul>
-            <li><a href="/" onclick="toggleMobileMenu()">Home</a></li>
-            <li><a href="/about.html" onclick="toggleMobileMenu()">About</a></li>
-            <li><a href="/opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
-            <li><a href="/resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="opportunities.html" onclick="toggleMobileMenu()">Opportunities</a></li>
+            <li><a href="resources.html" onclick="toggleMobileMenu()">Learning Resources</a></li>
         </ul>
     </div>
 

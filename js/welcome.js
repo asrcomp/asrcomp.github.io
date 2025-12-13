@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /* Tagline now uses the standard fade-up observer - no custom animation needed */
+
     /* ================================================= */
     /* MODAL WARP & CAROUSEL LOGIC                       */
     /* ================================================= */
