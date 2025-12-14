@@ -224,3 +224,158 @@ body {
         margin-bottom: 20px;
     }
 }
+
+/* ===================================================== */
+/* INFO BOX STYLES */
+/* ===================================================== */
+.info-box {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 15px;
+    padding: 0;
+    margin: 30px 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.info-box-header {
+    background: linear-gradient(135deg, rgba(0,139,139,0.8) 0%, rgba(30,58,138,0.6) 50%, rgba(15,23,42,0.8) 100%);
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.info-box-header h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.info-box-content {
+    padding: 30px;
+    color: #ffffff;
+}
+
+.info-box-content p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.info-box-content p:last-child {
+    margin-bottom: 0;
+}
+
+.resource-highlight, .resource-alternatives, .learning-tip {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #00d9ff;
+}
+
+.resource-alternatives {
+    border-left-color: #ffd700;
+}
+
+.learning-tip {
+    border-left-color: #32cd32;
+    margin-bottom: 0;
+}
+
+.resource-highlight h4, .resource-alternatives h4, .learning-tip h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resource-highlight h4 {
+    color: #00d9ff;
+}
+
+.resource-alternatives h4 {
+    color: #ffd700;
+}
+
+.learning-tip h4 {
+    color: #32cd32;
+}
+
+.resource-points {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.resource-points li {
+    position: relative;
+    padding: 8px 0 8px 25px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.resource-points li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #00d9ff;
+    font-size: 0.8rem;
+}
+
+.resource-alternatives .resource-points li::before {
+    color: #ffd700;
+}
+
+.resource-points-alt {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.resource-points-alt li {
+    position: relative;
+    padding: 8px 0 8px 25px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.resource-points-alt li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+    font-size: 0.8rem;
+}
+
+.learning-tip .resource-points li::before {
+    color: #32cd32;
+}
+
+.highlight-link-alt {
+    color: #ffd700 !important;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.highlight-link-alt:hover {
+    color: #ffed4e !important;
+}
+
+.highlight-link {
+    color: #00d9ff !important;
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.highlight-link:hover {
+    color: #00ffff !important;
+}

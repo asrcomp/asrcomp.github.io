@@ -1,13 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* --- LOGO DELAYED FADE-IN --- */
+    /* --- LOGO DELAYED FADE-IN WITH GLOW --- */
     const logoImg = document.querySelector('.navbar-logo-img');
     if (logoImg) {
         logoImg.style.opacity = '0';
         logoImg.style.transition = 'opacity 1s ease-in-out';
 
+        // Initially disable hover animations to control them manually
+        logoImg.style.pointerEvents = 'none';
+
         setTimeout(() => {
-            // Fade in the logo after 2 seconds
+            // Fade in the logo
             logoImg.style.opacity = '1';
+
+            // Start full glow animation
+            setTimeout(() => {
+                logoImg.style.animation = 'buildFire 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+
+                // Sustain full glow for 2 seconds, then fade off the glow
+                setTimeout(() => {
+                    logoImg.style.animation = 'dieDown 4s cubic-bezier(0.4, 0, 0.6, 1) forwards';
+
+                    // Re-enable hover interactions after glow animation completes
+                    setTimeout(() => {
+                        logoImg.style.pointerEvents = 'auto';
+                        logoImg.style.animation = '';
+                    }, 4000);
+                }, 3200); // 1200 (build) + 2000 (sustain)
+            }, 1000);
         }, 2000);
     }
 
