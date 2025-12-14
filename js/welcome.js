@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
             autoAdvanceInterval = setInterval(() => {
                 currentImgIndex = (currentImgIndex + 1) % currentImages.length;
                 updateGallery();
-            }, 2500); // 2.5 seconds
+            }, 3500); // 3.5 seconds
         }
     };
 
