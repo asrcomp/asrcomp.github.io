@@ -103,15 +103,15 @@ class Carousel {
         this.dots.forEach((dot, i) => dot.addEventListener('click', () => this.goTo(i)));
         window.addEventListener('resize', () => this.updateSlide());
 
-        // Auto-advance - TEMPORARILY DISABLED
-        // this.startAutoAdvance();
+        // Auto-advance
+        this.startAutoAdvance();
 
         // Touch/swipe events
         this.initTouchEvents();
 
         // Pause auto-advance on hover
-        // this.track.addEventListener('mouseenter', () => this.pauseAutoAdvance());
-        // this.track.addEventListener('mouseleave', () => this.resumeAutoAdvance());
+        this.track.addEventListener('mouseenter', () => this.pauseAutoAdvance());
+        this.track.addEventListener('mouseleave', () => this.resumeAutoAdvance());
     }
 
     initTouchEvents() {
