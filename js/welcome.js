@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* --- LOGO DELAYED FADE-IN WITH GLOW --- */
+    const logoImg = document.querySelector('.navbar-logo-img');
+    if (logoImg) {
+        logoImg.style.opacity = '0';
+        logoImg.style.transition = 'opacity 1s ease-in-out';
+
+        // Initially disable hover animations to control them manually
+        logoImg.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+            // Fade in the logo
+            logoImg.style.opacity = '1';
+
+            // Start full glow animation
+            setTimeout(() => {
+                logoImg.style.animation = 'buildFire 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+
+                // Sustain full glow for 2 seconds, then fade off the glow
+                setTimeout(() => {
+                    logoImg.style.animation = 'dieDown 4s cubic-bezier(0.4, 0, 0.6, 1) forwards';
+
+                    // Re-enable hover interactions after glow animation completes
+                    setTimeout(() => {
+                        logoImg.style.pointerEvents = 'auto';
+                        logoImg.style.animation = '';
+                    }, 4000);
+                }, 3200); // 1200 (build) + 2000 (sustain)
+            }, 1000);
+        }, 2000);
+    }
+
     /* --- GOLD PLATED TAGLINE ANIMATION --- */
     const taglineContainer = document.getElementById('taglineContainer');
     const taglineText = document.getElementById('taglineText');
@@ -62,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         taglineText.innerHTML = html;
+    }
 
     /* --- WRAP CLICK FOR DETAILS TEXT --- */
     const highlightCards = document.querySelectorAll('.highlight-card');
@@ -78,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    }
 
     /* --- TYPEWRITER (Disabled - replaced with hero banner) --- */
     const typingElement = document.getElementById('typing-text');
@@ -127,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.1,
+        threshold: 0.5,
         trackVisibility: false
     };
     const observerCallback = (entries) => {
@@ -155,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- SCROLL ARROW (Optimized with throttling) --- */
     const scrollArrow = document.getElementById('scrollArrow');
-    const logoImg = document.querySelector('.navbar-logo-img');
     let ticking = false;
 
     function updateScrollEffects() {
@@ -173,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (logoImg) {
             const startShrinking = 50;
             const endShrinking = 250;
-            const startSize = 140;
-            const endSize = 70;
+            const startSize = 147;
+            const endSize = 73.5;
 
             let scale;
             if (scrollPos <= startShrinking) {
@@ -211,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalOverlay = document.getElementById('detailsModal');
     const modalContent = document.querySelector('.modal-content');
     const modalCloseBtn = document.querySelector('.modal-close-btn');
+    const modalCloseBottom = document.getElementById('modalCloseBottom');
     const cardsForModal = document.querySelectorAll('.highlight-card');
 
     const modalTitle = document.getElementById('modalTitle');
@@ -222,6 +253,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carousel Elements
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+
+    // Only proceed with modal logic if modal elements exist
+    if (!modalOverlay || !modalContent || !modalCloseBtn) {
+        console.log('Modal elements not found, skipping modal initialization');
+    }
     
     /* ================================================= */
     /* NEW: BACKGROUND IMAGE SETUP - INSERTED HERE       */
@@ -379,6 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     modalCloseBtn.addEventListener('click', closeModal);
+    modalCloseBottom.addEventListener('click', closeModal);
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) closeModal();
     });

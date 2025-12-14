@@ -56,11 +56,14 @@
         </section>
 
         <div class="hero-tagline fade-up-element" id="taglineContainer" style="transition-delay: 0.8s;">
-            <p id="taglineText"></p>
+            <h2 class="hero-mission-heading">Developing Future-Ready Computing Professionals</h2>
+            <div class="hero-divider"></div>
+            <p class="hero-mission-description">Here at <span class="highlight-orange">Anderson Serangoon Junior College</span>, we empower our Computing students to delve into the exciting and rapidly evolving world of technology.<br><br>
+Our H2 Computing program is designed to cultivate both technical skills and problem-solving abilities that are <span class="highlight-lime">essential</span> in today's digital landscape.</p>
         </div>
 
         <div class="fade-up-element video-container" id="about">
-            <p class="video-caption">Watch this video to know more about Computing@ASR...</p>
+            <p class="video-caption">Watch this video below to learn more about Computing @ Anderson Serangoon Junior College</p>
             <div class="video-wrapper">
                 <iframe
                     src="https://www.youtube.com/embed/tHtBknG_x9Y?autoplay=0&mute=1&modestbranding=1"
@@ -73,17 +76,17 @@
         </div>
 
         <div id="highlights" class="content-section">
-            <h2 class="fade-up-element section-title">Highlights and Achievements</h2>
+            <h2 class="fade-up-element section-title">Recent Highlights and Achievements</h2>
             
             <div class="highlights-grid">
                 <!-- BlahajCTF 2025 -->
                 <div class="fade-up-element highlight-card"
                      data-title="BlahajCTF 2025🦈"
-                     data-desc="Write the description please, and put nice pictures..."
+                     data-desc=""
                      data-images="https://i.ytimg.com/vi/3_cKsWjun-c/hq720.jpg"
                      data-bg-image="https://i.ytimg.com/vi/3_cKsWjun-c/hq720.jpg">
                      <h3>BlahajCTF 2025</h3>
-                     <p>Who let the sharks out...<br>click for details</p>
+                     <p>Achieved 7th place<br>click for details</p>
                 </div>
 
                 <!-- CSIT Scholarship Ceremony 2025 -->
@@ -251,13 +254,13 @@ data-link="https://noisg.comp.nus.edu.sg/noi/">
     <div id="detailsModal" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close-btn">&times;</span>
-            
+
             <div class="modal-image-wrapper">
                 <img id="modalImg" src="" alt="Achievement Image">
                 <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
                 <button class="carousel-btn next" id="nextBtn">&#10095;</button>
             </div>
-            
+
             <div class="modal-text-wrapper">
                 <div class="modal-header">
                     <h3 id="modalTitle">Title Here</h3>
@@ -265,12 +268,20 @@ data-link="https://noisg.comp.nus.edu.sg/noi/">
                         Visit Website ↗
                     </a>
                 </div>
-                
+
                 <div id="modalDesc">Description goes here...</div>
+
+                <button class="modal-close-bottom" id="modalCloseBottom">Close</button>
             </div>
 
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            2026 Anderson Serangoon Junior College Computing Unit
+        </div>
+    </footer>
 
     <script src="js/welcome.js"></script>
 </body>
