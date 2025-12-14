@@ -1,32 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* --- LOGO DELAYED FADE-IN WITH GLOW --- */
+    /* --- LOGO DELAYED FADE-IN --- */
     const logoImg = document.querySelector('.navbar-logo-img');
     if (logoImg) {
         logoImg.style.opacity = '0';
         logoImg.style.transition = 'opacity 1s ease-in-out';
 
-        // Initially disable hover animations to control them manually
-        logoImg.style.pointerEvents = 'none';
-
         setTimeout(() => {
-            // Fade in the logo
+            // Fade in the logo after 2 seconds
             logoImg.style.opacity = '1';
-
-            // Start full glow animation
-            setTimeout(() => {
-                logoImg.style.animation = 'buildFire 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-
-                // Sustain full glow for 2 seconds, then fade off the glow
-                setTimeout(() => {
-                    logoImg.style.animation = 'dieDown 4s cubic-bezier(0.4, 0, 0.6, 1) forwards';
-
-                    // Re-enable hover interactions after glow animation completes
-                    setTimeout(() => {
-                        logoImg.style.pointerEvents = 'auto';
-                        logoImg.style.animation = '';
-                    }, 4000);
-                }, 3200); // 1200 (build) + 2000 (sustain)
-            }, 1000);
         }, 2000);
     }
 
@@ -111,13 +92,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- TYPEWRITER (Disabled - replaced with hero banner) --- */
+    /* --- TYPEWRITER WITH COLOR CYCLING AND RANDOM PHRASES --- */
     const typingElement = document.getElementById('typing-text');
     if (typingElement) {
-        const phrases = ['print("Hello world")', 'import sklearn', 'print("Welcome to ASR!")', 'import sqlite3'];
-        let phraseIndex = 0, charIndex = 0, isDeleting = false;
+        const phrases = [
+            'print("Hello world")',
+            'import sklearn',
+            'print("Welcome to ASR!")',
+            'import sqlite3',
+            'from flask import Flask',
+            'from sklearn.neighbors import KNeighborsClassifier',
+            'from sklearn.cluster import KMeans',
+            'from werkzeug.utils import secure_filename',
+            'import numpy as np',
+            'import random',
+            "with open('output.csv', 'w', newline='') as file:",
+            'from datetime import date, datetime, timedelta'
+        ];
+
+        const colors = [
+            '#00D9FF',  // blue
+            '#32CD32',  // lime green
+            '#FFD700',  // yellow
+            '#FFA500',  // orange
+            '#C0C0C0',  // light silver
+            '#FF69B4',  // hot pink
+            '#00FF7F',  // spring green
+            '#FF6347',  // tomato
+            '#9370DB'   // medium purple
+        ];
+
+        let phraseIndex = 0, charIndex = 0, isDeleting = false, colorIndex = 0;
+
+        function getRandomPhrase() {
+            const randomIndex = Math.floor(Math.random() * phrases.length);
+            return phrases[randomIndex];
+        }
+
         function type() {
             const current = phrases[phraseIndex];
+
+            // Change color for each new phrase
+            if (!isDeleting && charIndex === 0) {
+                typingElement.style.color = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }
+
             if (isDeleting) {
                 typingElement.textContent = current.substring(0, Math.max(0, charIndex - 1));
                 charIndex--;
@@ -125,10 +145,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 typingElement.textContent = current.substring(0, Math.min(current.length, charIndex + 1));
                 charIndex++;
             }
-            if (!isDeleting && charIndex === current.length) { isDeleting = true; setTimeout(type, 1500); }
-            else if (isDeleting && charIndex === 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); }
-            else { setTimeout(type, isDeleting ? 40 : 70); }
+
+            if (!isDeleting && charIndex === current.length) {
+                isDeleting = true;
+                setTimeout(type, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                // Get a random phrase that's different from the current one
+                let newPhraseIndex;
+                do {
+                    newPhraseIndex = Math.floor(Math.random() * phrases.length);
+                } while (newPhraseIndex === phraseIndex && phrases.length > 1);
+                phraseIndex = newPhraseIndex;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting ? 40 : 70);
+            }
         }
+
+        // Start the typewriter effect with a random initial phrase
+        phraseIndex = Math.floor(Math.random() * phrases.length);
         type();
     }
 
@@ -143,13 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollArrowClick = document.getElementById('scrollArrow');
     if (scrollArrowClick) {
         scrollArrowClick.addEventListener('click', () => {
-            const videoContainer = document.querySelector('.video-container');
-            if (videoContainer) {
-                videoContainer.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            window.scrollBy({
+                top: window.innerHeight * 0.8, // Scroll down 80% of viewport height
+                behavior: 'smooth'
+            });
         });
     }
 
@@ -348,6 +381,12 @@ document.addEventListener('DOMContentLoaded', () => {
             modalContent.style.transition = 'none';
             modalContent.style.transform = '';
             modalContent.style.opacity = '1';
+
+            // Reset scroll position to top
+            const modalTextWrapper = document.querySelector('.modal-text-wrapper');
+            if (modalTextWrapper) {
+                modalTextWrapper.scrollTop = 0;
+            }
 
             // 5. Measure
             const cardRect = card.getBoundingClientRect();

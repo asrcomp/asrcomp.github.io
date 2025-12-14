@@ -131,6 +131,22 @@ hr {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Special styling for Cyberthon logo to show full image */
+.competition-image img[src*="cyberthon-logo.png"] {
+    object-fit: contain;
+    background-color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Special styling for CeNCE logo to show full image */
+.competition-image img[src*="cence.png"] {
+    object-fit: contain;
+    background-color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .competition-text {
     flex: 1;
     display: flex;

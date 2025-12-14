@@ -72,4 +72,44 @@ document.addEventListener('DOMContentLoaded', function() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
+
+    // Next Page Button - Show at end of page
+    const nextPageButton = document.querySelector('.next-page-button');
+    if (nextPageButton) {
+        let ticking = false;
+
+        function checkScrollPosition() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            // Show button when user is within 200px of the bottom
+            const scrollThreshold = 200;
+            const isNearBottom = scrollTop + windowHeight >= documentHeight - scrollThreshold;
+
+            if (isNearBottom) {
+                nextPageButton.classList.add('visible');
+            } else {
+                nextPageButton.classList.remove('visible');
+            }
+
+            ticking = false;
+        }
+
+        function throttleScroll() {
+            if (!ticking) {
+                requestAnimationFrame(checkScrollPosition);
+                ticking = true;
+            }
+        }
+
+        // Initial check
+        checkScrollPosition();
+
+        // Check on scroll
+        window.addEventListener('scroll', throttleScroll);
+
+        // Check on window resize
+        window.addEventListener('resize', throttleScroll);
+    }
 });

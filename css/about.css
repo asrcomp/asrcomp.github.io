@@ -444,6 +444,36 @@ hr { width: 90%; max-width: 1400px; margin: 30px auto; border: none; border-top:
 .faq-item.open .faq-answer { max-height: none; padding: 0 20px 20px; opacity: 1; }
 .faq-answer p { color: rgba(255,255,255,0.85); line-height: 1.7; font-size: 0.95em; margin: 0; }
 
+/* FAQ List and Bold Text Styling */
+.faq-answer ul {
+    color: white;
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.faq-answer ul li {
+    color: white;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.faq-answer ul li ul {
+    margin: 5px 0;
+    padding-left: 20px;
+}
+
+.faq-answer ul li ul li {
+    color: white;
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.faq-answer b,
+.faq-answer strong {
+    color: #FFD700;
+    font-weight: bold;
+}
+
 /* ===================================================== */
 /* RESPONSIVE */
 /* ===================================================== */

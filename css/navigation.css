@@ -86,6 +86,22 @@ body::before {
     animation: buildFire 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
 }
 
+/* Small logo for non-index pages */
+.navbar-logo-img-small {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-logo-img-small:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 139, 139, 0.4);
+}
+
 @keyframes buildFire {
     0% {
         box-shadow:
@@ -521,5 +537,121 @@ body::before {
         transform: translateZ(0);
         backface-visibility: hidden;
         perspective: 1000;
+    }
+}
+
+/* ===================================================== */
+/* NEXT PAGE BUTTON */
+/* ===================================================== */
+.next-page-button {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg,
+        rgba(0, 139, 139, 0.9) 0%,
+        rgba(30, 58, 138, 0.9) 50%,
+        rgba(15, 23, 42, 0.9) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 95;
+    text-decoration: none;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(0, 139, 139, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+}
+
+.next-page-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    animation: borderGlow 3s linear infinite;
+}
+
+.next-page-button .arrow-icon {
+    width: 0;
+    height: 0;
+    border-left: 18px solid rgba(255, 255, 255, 0.9);
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 3px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.next-page-button:hover {
+    transform: scale(1.15) translateX(-3px);
+    background: linear-gradient(135deg,
+        rgba(0, 169, 169, 0.95) 0%,
+        rgba(44, 82, 130, 0.95) 50%,
+        rgba(26, 54, 93, 0.95) 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(0, 169, 169, 0.4),
+                0 0 50px rgba(30, 58, 138, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.next-page-button:hover::before {
+    opacity: 1;
+    animation: borderGlow 1s linear infinite;
+}
+
+.next-page-button:hover .arrow-icon {
+    margin-left: 6px;
+    border-left-width: 24px;
+    border-top-width: 14px;
+    border-bottom-width: 14px;
+}
+
+.next-page-button:active {
+    transform: scale(1.05) translateX(-1px);
+    transition: all 0.1s ease;
+}
+
+.next-page-button.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+@media (max-width: 767px) {
+    .next-page-button {
+        bottom: 80px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .next-page-button .arrow-icon {
+        border-left-width: 14px;
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+    }
+
+    .next-page-button:hover .arrow-icon {
+        border-left-width: 18px;
+        border-top-width: 12px;
+        border-bottom-width: 12px;
     }
 }

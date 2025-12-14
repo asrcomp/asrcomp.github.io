@@ -23,6 +23,9 @@
 <body>
     <nav class="top-navbar">
         <div class="navbar-logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="images/logo.webp" alt="ASR Computing" class="navbar-logo-img-small">
+            </a>
         </div>
         <div class="desktop-nav-links">
             <a href="index.html" class="home-button">Home</a>
@@ -186,18 +189,18 @@
         <div class="assessment-box fade-up-element">
             <h3>Exam Requirements</h3>
             <ul class="requirement-list">
-                <li>Paper 1: Computing Theory
+                <li><span style="font-weight: bold; font-size: 1.2em; color: #98FB98;">📝 Paper 1: Computing Theory</span>
                     <ul>
                         <li>3 hours written paper</li>
-                        <li>Covers topics such as Computing Networks, Network Security, Databases, etc</li>
+                        <li>Covers theoretical topics in Computing</li>
                         <li>60% weightage</li>
                     </ul>
                 </li>
                 
-                 <li>Paper 2: Computing Practical
+                <li><span style="font-weight: bold; font-size: 1.2em; color: #87CEEB;">💻 Paper 2: Computing Practical</span>
                     <ul>
                         <li>3 hours to complete 4 programming tasks</li>
-                        <li>Covers topics such as Python, Data Structures and Algorithms, Object Oriented Programming, SQL and Flask Web Applications, etc</li>
+                        <li>Covers topics such as Python, Data Structures and Algorithms, Object Oriented Programming, Machine Learning, SQL, Flask Web Applications, etc.</li>
                         <li>40% weightage</li>
                     </ul>
                 </li>
@@ -218,7 +221,7 @@
                 <ul class="teacher-bio">
                     <li>BSc (Hons) in Applied Mathematics (National University of Singapore)</li>
                     <li>Postgraduate Diploma in Education (JC Track), Distinction</li>
-                    <li>Taught the 2024–25 batch. Will be taking 2026 JC1 batch</li>
+                    <li>Taught the 2024–25 batch. Will be teaching the 2026 JC1 batch</li>
                 </ul>
                 <div class="teacher-social-links">
                     <a href="https://www.linkedin.com/in/lam-meng-hwee-208299286/" target="_blank" class="linkedin-btn" title="Connect on LinkedIn">
@@ -311,8 +314,8 @@
                 </button>
                 <div class="faq-answer">
                     <p>Yes, there is an assessment that you would have to take if you're keen to take the subject. This is designed to assess your computational thinking skills. Importantly, no prior knowledge of any programming languages is required, so you can focus on demonstrating your problem-solving abilities and logical reasoning. Many students would find the assessment rather manageable. So if you're keen to take the subject, do ensure that you take this assessment after your matriculation to ASRJC 😀 . More information will be provided during the H2 Computing subject talk on the first day of matriculation.</p>
-                    <br><br>
-              <p><strong>For JC1 repeat students:</strong> For any JC1 repeat students who intend to take H2 Computing, including those retaking the subject again in JC1, you must take and clear the selection test to be enrolled in the subject.</p>
+                    <br>
+              <p><strong>Note for JC1 repeat students:</strong> Note that to be enrolled in the subject, you must still take and clear the selection test together with the rest of the new JC1 students, regardless of whether you are changing a subject combination or retaking the subject in JC1.</p>
                 </div>
             </div>
 
@@ -328,11 +331,33 @@
 
             <div class="faq-item">
                 <button class="faq-question">
+                    <span>What programs would I be using for the A-Level exams?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>For the A-Level Computing examinations, you will be using the following specific software versions:</p>
+                    <ul>
+                        <li><b>Python 3.13.7</b> and <b>JupyterLab 4.4.9</b>
+                            <ul>
+                                <li>Flask 3.1.2</li>
+                                <li>scikit-learn 1.7.2</li>
+                            </ul>
+                        </li>
+                        <li><b>Notepad++ 7.5.4</b> as the text editor</li>
+                        <li><b>DB Browser for SQLite 3.10.1</b> as the database tool</li>
+                        <li><b>Google Chrome</b> as the official browser</li>
+                    </ul>
+                    <p>The exams will be conducted using college laptops running <b>Windows 11</b> with all these programs pre-installed. Please note that <b>internet connection will be blocked</b> during the examination period to ensure academic integrity.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
                     <span>I'm interested to take part in the National Olympiad in Informatics (NOI) this year. Would I be able to do so?</span>
                     <span class="faq-icon">+</span>
                 </button>
                 <div class="faq-answer">
-                    <p>We will arrange for a selection to see if you are able to cope well with the rigour. It would likely be on the day of matriculation, due to the tight registration deadline for the olympiad, so you are advised to prepare well from now till the day you are posted to ASR.</p>
+                    <p>We will arrange for a selection process to determine your competency level in competitive programming skills. This assessment will likely be conducted on the day of matriculation due to the tight registration deadline for the olympiad, so you are advised to prepare well from now till the day you are posted to ASR.</p>
                     <p>A practice platform you can utilise is <a href="https://codebreaker.xyz/group/noi" target="_blank" style="color: #4fb3d9;">Codebreaker</a>.</p>
                 </div>
             </div>
@@ -365,7 +390,13 @@
             observer.observe(element);
         });
     </script>
-  <script src="js/welcome.js"></script>
+
+    <a href="opportunities.html" class="next-page-button" title="Next: External Learning Opportunities">
+        <div class="arrow-icon"></div>
+    </a>
+
+    <script src="js/main.js"></script>
+<script src="js/welcome.js"></script>
 </body>
 
 </html>
