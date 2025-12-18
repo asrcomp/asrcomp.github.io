@@ -207,15 +207,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* --- FADE-UP OBSERVER (Fixed to prevent flickering) --- */
     const fadeUpElements = document.querySelectorAll('.fade-up-element');
+
+    // Handle gradient bars separately for sequential animation
+    const gradientBars = document.querySelectorAll('.gradient-bar.fade-up-element');
+    let gradientBarTriggered = false;
+
     const observerOptions = {
         root: null,
         rootMargin: '0px',
         threshold: 0.5,
         trackVisibility: false
     };
+
     const observerCallback = (entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('in-view')) {
+                // Skip gradient bars - they'll be handled separately
+                if (entry.target.classList.contains('gradient-bar')) {
+                    return;
+                }
+
                 entry.target.classList.add('in-view');
 
                 // Trigger tagline character animation specifically
@@ -233,8 +244,58 @@ document.addEventListener('DOMContentLoaded', () => {
             // This prevents the animation from repeating and causing flicker
         });
     };
+
+    // Separate observer for gradient bars
+    const gradientBarsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !gradientBarTriggered) {
+                gradientBarTriggered = true;
+
+                // Trigger gradient bars sequentially with overlapping timing
+                const bars = [
+                    document.querySelector('.about-bar'),
+                    document.querySelector('.opportunities-bar'),
+                    document.querySelector('.resources-bar')
+                ];
+
+                // Animate About (Orange) - starts immediately
+                if (bars[0]) {
+                    setTimeout(() => {
+                        bars[0].classList.add('in-view');
+                    }, 100);
+                }
+
+                // Animate Opportunities (Blue) - starts 400ms after About
+                if (bars[1]) {
+                    setTimeout(() => {
+                        bars[1].classList.add('in-view');
+                    }, 500); // 100 + 400
+                }
+
+                // Animate Resources (Green) - starts 400ms after Opportunities
+                if (bars[2]) {
+                    setTimeout(() => {
+                        bars[2].classList.add('in-view');
+                    }, 900); // 500 + 400
+                }
+            }
+        });
+    }, observerOptions);
+
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    fadeUpElements.forEach(el => observer.observe(el));
+
+    // Regular fade-up elements
+    fadeUpElements.forEach(el => {
+        if (!el.classList.contains('gradient-bar')) {
+            observer.observe(el);
+        }
+    });
+
+    // Gradient bars container
+    const quickLinksSection = document.querySelector('.quick-links-section');
+    if (quickLinksSection) {
+        gradientBarsObserver.observe(quickLinksSection);
+    }
 
     /* --- SCROLL ARROW (Optimized with throttling) --- */
     const scrollArrow = document.getElementById('scrollArrow');

@@ -309,6 +309,327 @@ body::before {
 }
 
 /* ===================================================== */
+/* QUICK LINKS GRADIENT BARS */
+/* ===================================================== */
+.quick-links-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.quick-links-container {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+
+.gradient-bar {
+    flex: 1;
+    min-width: 280px;
+    max-width: 380px;
+    height: 140px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* 3D protruded effect */
+    box-shadow:
+        0 12px 0 rgba(0, 0, 0, 0.3),
+        0 14px 25px rgba(0, 0, 0, 0.4),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Ensure gradient bars respect fade-up animation but maintain their default transform */
+.gradient-bar.fade-up-element {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
+}
+
+.gradient-bar.fade-up-element.in-view {
+    opacity: 1 !important;
+    transform: translate3d(0, -2px, 0) !important;
+}
+
+/* About Bar - Darker Orange Gradient */
+.about-bar {
+    background: linear-gradient(135deg, #FF8C00 0%, #FF6B00 50%, #E55100 100%);
+}
+
+/* Opportunities Bar - Cyan/Blue Gradient */
+.opportunities-bar {
+    background: linear-gradient(135deg, #00D9FF 0%, #0099CC 50%, #006699 100%);
+}
+
+/* Resources Bar - Lime/Green Gradient */
+.resources-bar {
+    background: linear-gradient(135deg, #32CD32 0%, #228B22 50%, #006400 100%);
+}
+
+/* Animated gradient overlay */
+.gradient-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.gradient-bar:hover::before {
+    left: 100%;
+}
+
+/* Content styling */
+.bar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.bar-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.bar-icon svg {
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.bar-text {
+    flex-grow: 1;
+}
+
+.bar-text h3 {
+    font-family: 'Quantico', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 5px 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.bar-text p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effects with gradual buildup */
+.gradient-bar {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                padding 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gradient-bar:hover {
+    transform: translateY(-8px) scale(1.06) scaleX(1.01);
+    /* Enhanced 3D pop-up effect with aurora */
+    box-shadow:
+        0 20px 0 rgba(0, 0, 0, 0.4),
+        0 25px 40px rgba(0, 0, 0, 0.5),
+        0 0 60px rgba(255, 184, 65, 0.8),
+        0 0 100px rgba(255, 140, 0, 0.6),
+        0 0 150px rgba(255, 215, 0, 0.4),
+        inset 0 3px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    /* Expand the box */
+    width: calc(100% + 15px);
+    height: 150px;
+    padding: 33px;
+}
+
+.bar-icon {
+    transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bar-icon svg {
+    transition: color 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gradient-bar:hover .bar-icon {
+    transform: scale(1.12);
+    background: rgba(255, 215, 0, 0.25);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.gradient-bar:hover .bar-icon svg {
+    transform: scale(1);
+    color: #FFD700;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+}
+
+.bar-text h3 {
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.gradient-bar:hover .bar-text h3 {
+    transform: translateX(5px);
+}
+
+/* Enhanced aurora effects for each button type */
+.about-bar:hover {
+    box-shadow:
+        0 20px 0 rgba(139, 69, 19, 0.5),
+        0 25px 40px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(255, 140, 0, 1),
+        0 0 120px rgba(255, 184, 65, 0.8),
+        0 0 180px rgba(255, 215, 0, 0.6),
+        inset 0 3px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.opportunities-bar:hover {
+    box-shadow:
+        0 20px 0 rgba(0, 51, 102, 0.5),
+        0 25px 40px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(0, 153, 204, 1),
+        0 0 120px rgba(0, 217, 255, 0.8),
+        0 0 180px rgba(255, 215, 0, 0.6),
+        inset 0 3px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+}
+
+.resources-bar:hover {
+    box-shadow:
+        0 20px 0 rgba(0, 64, 0, 0.5),
+        0 25px 40px rgba(0, 0, 0, 0.5),
+        0 0 80px rgba(34, 139, 34, 1),
+        0 0 120px rgba(50, 205, 50, 0.8),
+        0 0 180px rgba(255, 215, 0, 0.6),
+        inset 0 3px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced pulse animation on hover */
+@keyframes pulse {
+    0% {
+        box-shadow:
+            0 20px 0 rgba(139, 69, 19, 0.5),
+            0 25px 40px rgba(0, 0, 0, 0.5),
+            0 0 60px rgba(255, 184, 65, 0.8),
+            0 0 100px rgba(255, 140, 0, 0.6),
+            0 0 150px rgba(255, 215, 0, 0.4),
+            inset 0 3px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 20px 0 rgba(139, 69, 19, 0.5),
+            0 25px 40px rgba(0, 0, 0, 0.5),
+            0 0 80px rgba(255, 184, 65, 1),
+            0 0 120px rgba(255, 140, 0, 0.8),
+            0 0 180px rgba(255, 215, 0, 0.6),
+            inset 0 3px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        box-shadow:
+            0 20px 0 rgba(139, 69, 19, 0.5),
+            0 25px 40px rgba(0, 0, 0, 0.5),
+            0 0 60px rgba(255, 184, 65, 0.8),
+            0 0 100px rgba(255, 140, 0, 0.6),
+            0 0 150px rgba(255, 215, 0, 0.4),
+            inset 0 3px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -3px 0 rgba(0, 0, 0, 0.4);
+    }
+}
+
+.about-bar:hover {
+    animation: pulse 2s infinite;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    .quick-links-section {
+        width: 95%;
+        margin: 40px auto;
+        padding: 0 15px;
+    }
+
+    .quick-links-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .gradient-bar {
+        max-width: none;
+        height: 120px;
+        padding: 25px;
+    }
+
+    .bar-content {
+        gap: 15px;
+    }
+
+    .bar-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .bar-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .bar-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Medium screens - keep in same row but adjust sizing */
+@media (max-width: 1100px) and (min-width: 768px) {
+    .gradient-bar {
+        min-width: 240px;
+        padding: 25px;
+    }
+
+    .quick-links-container {
+        gap: 20px;
+    }
+
+    .bar-text h3 {
+        font-size: 1.6rem;
+    }
+
+    .bar-text p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ===================================================== */
 /* CONTENT SECTIONS (Video & Highlights) */
 /* ===================================================== */
 .video-container { width: 95%; max-width: 1400px; padding: 20px; margin: 20px 0 60px 0; text-align: center; color: white; }
